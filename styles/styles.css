@@ -6,6 +6,7 @@
 
 body {
     background-image: url("fondosoft.jpeg");
+    
 }
 
 .form-registro{
@@ -13,11 +14,12 @@ body {
     background: #24303c;
     padding: 30px;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 50px;
     border-radius: 4px;
     font-family: 'Roboto', sans-serif;
     color: white;
     box-shadow: 7px 13px 37px #000;
+    opacity: 90%;
 }
 
 .form-registro h4{
@@ -35,7 +37,15 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     color: white;
+    
 }
+
+.descripcion{
+    padding-bottom: 40px;
+
+}
+
+
 
 .form-registro .boton{
     width: 100%;
@@ -45,4 +55,11 @@ body {
     color: white;
     margin: 16px 0;
     font-size: 16px;
+}
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
