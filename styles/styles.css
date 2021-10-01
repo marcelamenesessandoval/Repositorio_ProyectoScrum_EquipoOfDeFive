@@ -9,12 +9,17 @@ body {
     
 }
 
+.fondoedicion {
+    background-image: url("fondoSoft2.jpeg");
+    
+}
+
 .form-registro{
     width: 400px;
     background: #24303c;
     padding: 30px;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 45px;
     border-radius: 4px;
     font-family: 'Roboto', sans-serif;
     color: white;
@@ -45,6 +50,9 @@ body {
 
 }
 
+.mouse{
+    cursor: pointer;
+}
 
 
 .form-registro .boton{
@@ -55,6 +63,7 @@ body {
     color: white;
     margin: 16px 0;
     font-size: 16px;
+    cursor: pointer;
 }
 
 

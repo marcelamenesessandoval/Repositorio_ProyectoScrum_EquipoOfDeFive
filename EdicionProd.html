@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,700&display=swap" rel="stylesheet">
+    <title>Formulario Registro de Productos</title>
+</head>
+
+<body class="fondoedicion">
+    <section class="form-registro">
+        <form>
+            <h4>Edicion de Productos</h4>
+            <input class="controls" type="number" name="ID (Inmutable)" placeholder="0000"  max="9999" disabled  >
+            <input class="controls" type="text" name="Nombre Producto" placeholder="Disco duro" required>
+            <input class="controls descripcion" type="text" name="Descripcion" placeholder="Seagate Exos X18 16TB Enterprise HDD " required>
+            <input class="controls " type="number" name="Valor Unitario" placeholder="150.000" required>
+            <select  class="controls mouse" required  >
+                <option  disabled hidden>Estado del Producto</option>
+                <option selected>Disponible</option>
+                <option >No Disponible</option>
+            </select>
+            <input class="boton" type="submit" value="Editar Producto">
+
+        </form>
+
+
+
+    </section>
+
+</body>
+
+</html>
