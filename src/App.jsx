@@ -15,8 +15,10 @@ import UsuariosPage from 'pages/admin/usuarios';
 import PublicLayout from 'layouts/PublicLayout';
 import PrivateLayout from "layouts/PrivateLayout";
 import AuthLayout from "layouts/AuthLayout";
+import IngresarPage from "pages/admin/productos/Ingresar";
 //import 'styles/stylesside.module.css';
 import 'styles/stylesppal.css';
+
 
 
 
@@ -28,7 +30,7 @@ function App() {
       <Router>
         <Switch>
           {/* PRIVATE */}
-          <Route exact path={['/admin', '/nuevaventa', '/ventas', '/admin/productos', '/admin/usuarios']}>
+          <Route exact path={['/admin', '/nuevaventa', '/ventas', '/admin/productos', '/admin/usuarios', '/admin/productos/ingresar']}>
             <PrivateLayout>
               <Switch>
               <Route exact path='/nuevaventa'>
@@ -39,6 +41,9 @@ function App() {
                 </Route>
                 <Route exact path='/admin/productos'>
                 <ProductosPage />
+                </Route>
+                <Route exact path='/admin/productos/ingresar'>
+                <IngresarPage />
                 </Route>
                 <Route exact path='/admin/usuarios'>
                 <UsuariosPage />
