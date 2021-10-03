@@ -2,6 +2,7 @@ import React from 'react'
 
 const IngresarPage = () => {
     return (
+        <div className="fondo">
         <section className="form-registro">
                 <form>
                     <h4>Registro de Productos</h4>
@@ -21,6 +22,7 @@ const IngresarPage = () => {
 
 
             </section>
+            </div>
     );
 }
 

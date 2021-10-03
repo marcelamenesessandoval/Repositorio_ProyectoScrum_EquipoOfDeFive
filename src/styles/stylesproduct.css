@@ -1,12 +1,13 @@
-body{
-    background-image: url(./fondosoft.jpeg);
-    
+ .fondo{
+  width: inherit; 
+  background-image: url(./fondosoft.jpeg);
+  background-size: cover
 }
-  
+
 
   
   .form-registro{
-    width: 400px;
+    width: 400px ;
     background: #24303c;
     padding: 30px;
     margin: auto;
@@ -64,12 +65,7 @@ body{
   margin: 0; 
   }
   
-  .form-registro .alert{
-      color: white;
-      margin-bottom: 20px;
-      
 
-  }
 
 
   
