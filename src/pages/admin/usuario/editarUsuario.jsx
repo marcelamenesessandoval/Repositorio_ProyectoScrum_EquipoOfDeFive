@@ -18,7 +18,7 @@ function EditarUsuario() {
                     <option>Autorizado</option>
                     <option>No Autorizado</option>
                 </select>
-                <input className="boton" type="button" onClick={()=>alert("El Usuario se ha editado correctamente")} defaultValue="Editar Producto" />
+                <input className="botonRegistro" type="button" onClick={()=>alert("El Usuario se ha editado correctamente")} defaultValue="Editar Producto" />
                 
             </form>
         </section>

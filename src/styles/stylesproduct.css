@@ -1,5 +1,6 @@
 body{
     background-image: url(./fondosoft.jpeg);
+    
 }
   
 
@@ -28,7 +29,7 @@ body{
     padding: 10px;
     border-radius: 4px;
     margin-bottom: 16px;
-    border: 1px solid #1f53c5;
+    border: 1px solid #009688;
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     color: white;
@@ -45,9 +46,9 @@ body{
   }
   
   
-  .form-registro .boton{
+  .form-registro .botonRegistro{
     width: 100%;
-    background: #1f53c5;
+    background: #009688;
     border: none;
     padding:  12px;
     color: white;
@@ -70,7 +71,5 @@ body{
 
   }
 
-  .fondo{
-      background-image: url(./fondosoft.jpeg);
-  }
+
   
