@@ -17,6 +17,8 @@ import PrivateLayout from "layouts/PrivateLayout";
 import AuthLayout from "layouts/AuthLayout";
 //import 'styles/stylesside.module.css';
 import 'styles/stylesppal.css';
+import 'styles/styleslogin.css';
+import 'styles/stylesregister.css';
 
 
 
