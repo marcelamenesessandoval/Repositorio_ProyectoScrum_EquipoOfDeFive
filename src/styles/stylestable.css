@@ -1,0 +1,264 @@
+  
+  .styleContentSection{
+    justify-content: center;
+    justify-self: center;
+    margin: 5px;
+    margin-top: 45px;
+    width:100%;
+    /*box-shadow: 7px 13px 37px #000;
+    opacity: 90%;
+    border-radius: 4px;
+    background: #24303c;*/
+  }
+  
+  
+  .tableTitle{
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 40px;
+    font-family: sans-serif;
+    color: white;
+  }
+  
+  .textTable{
+    font-family: sans-serif;
+    color: white;
+  }
+  
+  .styleOptionsTable{
+      display: flex;
+      margin: 3%;
+  }
+
+  .searchInTable{
+      
+      position: relative;
+      align-items: center;
+      float:right;
+      left:420px;
+      display: flex;
+
+  }
+
+  .searchInTableUser{
+    position: relative;
+    left: 65%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+
+  .buttonCreate{
+    
+    height: 10%;
+    align-self: center;
+    color: white;
+    background-color: rgb(70, 165, 186);
+    height: 40px;
+    text-align: center;
+    padding: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .buttonCreate:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+ 
+
+  .labelSearch{
+    margin: 10px;
+    font-family:sans-serif;
+    font-size: medium;
+    color: white;
+  }
+  
+  .inputSearch{
+    margin: 5px;
+    padding: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 150px;
+    height: 23px;
+    border-radius: 15px;
+    border: 2px solid #009688;
+
+  }
+
+  .inputSearch:focus{
+    border:3px solid rgb(150, 150, 150);
+    outline: none;
+  }
+  
+  
+  .table{
+    border-collapse: collapse;
+    margin: 3%;
+    padding: 3%;
+    border: white 2px solid;
+    font-family: sans-serif;
+    width:900px;
+  }
+
+  .column{
+    text-align: center;
+    border-collapse: collapse;
+    border: white 2px solid;
+    font-size: 90%;
+    padding: 1%;
+    width: 10%;
+    white-space: pre-wrap;
+    font-family: sans-serif;
+    font-weight: bold;
+    background-color:#009688;
+    color: white;
+  }
+  .narrowColumn{
+    width: 7%;
+    font-family: sans-serif;
+    border: white 2px solid;
+  }
+
+  .widthColumn{
+    width: 20%;
+    font-family: sans-serif;
+    border: white 2px solid;
+  }
+ 
+
+  .row{
+    text-align: center;
+    border-collapse: collapse;
+    border: white 2px solid;
+    white-space: pre-wrap;
+    background-color:#dbebe8;
+    color: rgb(87, 86, 86);
+  }
+  
+  
+  
+  .cell{
+    text-align: center;
+    border-collapse: collapse;
+    border: white 2px solid;
+    padding: 1%;
+    height: 2%;
+    font-size:95%;
+    white-space: pre-wrap
+  }
+  
+
+  .detailIcon{
+      font-size: 130%;
+      margin-left: 8%;
+      margin-right: 8%;
+      cursor: pointer;
+      color: rgb(57, 87, 94);
+
+  }
+
+  .editIcon{
+    font-size: 130%;
+    margin-left: 8%;
+    margin-right: 8%;
+    cursor: pointer;
+    color: rgb(57, 87, 94);
+  }
+  
+  .tooltip{
+    position: relative;
+  }
+
+  .detailIcon:hover .tooltipText{
+    display:block;
+  }
+  .editIcon:hover .tooltipText{
+    display: block;
+  }
+
+
+  .tooltipText{
+    text-align: center;
+    display: none;
+    position: absolute;
+    background-color: grey;
+    line-height: 20px;
+    z-index: 500;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    padding: 5px;
+    margin: 8px;
+    border-radius: 5px;
+    bottom: 10px;
+    left: 20px;
+    width: 290%;
+    font-family: 'Work Sans', sans-serif;
+    font-size: medium;
+    font-weight: bold;
+  }
+
+
+
+ .pager{
+    margin: auto;
+    width: 100%;
+    display: flex;
+    max-width: 750px;
+    justify-content: center;
+    align-items: center;
+ }
+
+  .numPag{
+    flex-grow: 0.08;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    transition: all 0.5s;
+    cursor:pointer;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: white;
+    font-weight: bold;
+  }
+
+  .numPag::before{
+    content:"";
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    width: 0px;
+    height: 0px;
+    transform: translate(-50%, -50%);
+    background-color: rgb(70, 165, 187);
+    border-radius: 50%;
+    transition: all 0.5s;
+    z-index: -1;
+  }
+
+  .numPag:hover{
+    color: white;
+  }
+
+
+  .numPag:hover::before{
+    width: 40px;
+    height: 40px;
+  }
+
+
+  .backgroundTables{
+    background-image: url(./fondosoft.jpeg);
+    width: inherit;
+  }
+
+  
+  
+
+
+  

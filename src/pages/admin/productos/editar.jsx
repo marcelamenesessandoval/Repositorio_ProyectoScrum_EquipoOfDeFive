@@ -15,7 +15,7 @@ const EditarPage = () => {
                     <option>Disponible</option>
                     <option value={0}>No Disponible</option>
                 </select>
-                <input className="botonRegistro" type="button" onClick={()=>alert("El producto se ha editado correctamente")} defaultValue="Editar Producto" />
+                <input className="botonRegistro" type="submit" onClick={()=>alert("El producto se ha editado correctamente")} defaultValue="Editar Producto" />
                 
             </form>
         </section>

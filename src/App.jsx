@@ -17,10 +17,13 @@ import PrivateLayout from "layouts/PrivateLayout";
 import AuthLayout from "layouts/AuthLayout";
 import IngresarPage from "pages/admin/productos/Ingresar";
 import EditarPage from "pages/admin/productos/editar";
-import EditarUsuario from "pages/admin/usuario/editarUsuario";
+import EditarUsuario from "pages/admin/usuario/editarUsuario"
 //import 'styles/stylesside.module.css';
 import 'styles/stylesppal.css';
 import 'styles/stylesproduct.css';
+import 'styles/stylestable.css';
+
+
 
 
 
