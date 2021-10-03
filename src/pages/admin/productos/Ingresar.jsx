@@ -14,7 +14,7 @@ const IngresarPage = () => {
                         <option >Disponible</option>
                         <option >No Disponible</option>
                     </select>
-                    <input className="boton" type="submit" value="Añadir Producto" />
+                     <input className="boton" type="button" onClick={()=>alert("El producto se ha añadido correctamente")} defaultValue="Añadir Producto" />
 
                 </form>
 
