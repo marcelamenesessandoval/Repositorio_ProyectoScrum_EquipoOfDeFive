@@ -20,6 +20,8 @@ import EditarPage from "pages/admin/productos/editar";
 import EditarUsuario from "pages/admin/usuario/editarUsuario"
 //import 'styles/stylesside.module.css';
 import 'styles/stylesppal.css';
+import 'styles/styleslogin.css';
+import 'styles/stylesregister.css';
 import 'styles/stylesproduct.css';
 import 'styles/stylestable.css';
 
