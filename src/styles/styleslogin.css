@@ -1,8 +1,9 @@
 body{
     padding: 0;
     margin: 0;
-    background: url(media/background_login.jpg) no-repeat center top;
+    background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(media/background_login.jpg) no-repeat center top;
     background-size: cover;
+    background-position-x: center;
 }
 
 .login-box{

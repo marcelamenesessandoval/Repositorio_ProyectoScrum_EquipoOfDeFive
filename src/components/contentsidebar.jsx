@@ -6,7 +6,7 @@ const ContentSidebar = () => {
 
     return (
             <div>
-                <p>Aqui va el contenido segun sea la pagina</p>
+                <p>.</p>
              </div>
     );
 };

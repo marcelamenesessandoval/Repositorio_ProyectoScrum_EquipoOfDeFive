@@ -1,9 +1,11 @@
 body{
     padding: 0%;
     margin: 0%;
-    background: url(media/imagen_registro.jpg) no-repeat center top;
+    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(media/imagen_registro.jpg) no-repeat center top;
     background-size: cover;
+    background-position-x: center;
   }
+
   .registro{
     width: 300px;
       height: 400;
@@ -14,8 +16,7 @@ body{
       position: absolute;
       transform: translate(-50%, -50%);
       box-sizing: border-box;
-      padding: 45px 30px;
-    
+      padding: 45px 30px; 
   }
   
   .registro h1{
