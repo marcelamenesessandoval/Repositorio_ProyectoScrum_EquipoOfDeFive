@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const RegistroPage = () => {
     return <div>
@@ -19,13 +20,16 @@ const RegistroPage = () => {
         <label for="password">Ingrese su Contraseña</label>
         <input type="password" />
         
-        
-    
         <input type="submit" value="Registrarse"/>
-    
-    
-        <p>Ya tienes una cuenta</p>
-    
+       
+        <p>¿Ya tienes una cuenta?</p>
+        <br></br>
+        <br></br>
+        <br></br>
+        <Link to='/'>
+        <p>Volver al inicio</p>
+        </Link>
+        
     </form>
     </div>
     </div>;

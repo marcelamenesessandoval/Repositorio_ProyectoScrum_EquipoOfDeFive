@@ -11,9 +11,6 @@ import React from 'react'
       <Link to='/login'>
         <button type= "button"><span></span>Login</button>
       </Link>
-      <Link to='/admin'>
-        <button type= "button"><span></span>Admin</button>
-      </Link>
     </>
   
     )
