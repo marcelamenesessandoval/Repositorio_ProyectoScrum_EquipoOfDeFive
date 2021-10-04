@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 import React from 'react';
-import BotonMain from './botonmain';
+
   
 const BotonSB = {
   width: '200px',

@@ -1,0 +1,71 @@
+ .fondo{
+  width: inherit; 
+  background-image: url(./fondoSoft2.jpeg);
+  background-size: cover
+}
+
+
+  
+  .form-registro{
+    width: 400px ;
+    background: #24303c;
+    padding: 30px;
+    margin: auto;
+    margin-top: 45px;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+    opacity: 90%;
+  }
+  
+  .form-registro h4{
+    font-size:  22px;
+    margin-bottom: 20px;
+  }
+  
+  .controls{
+    width: 100%;
+    background: #24303c;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid #009688;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: white;
+    
+  }
+  
+  .descripcion{
+    padding-bottom: 40px;
+  
+  }
+  
+  .mouse{
+    cursor: pointer;
+  }
+  
+  
+  .form-registro .botonRegistro{
+    width: 100%;
+    background: #009688;
+    border: none;
+    padding:  12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+  }
+  
+
+
+
+  

@@ -1,43 +1,45 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const arregloProductosProvisional = [
     {
         id: "p001",
-        producto:"Producto 1",
-        descripcion:"Producto con características de prueba.", 
+        producto: "Producto 1",
+        descripcion: "Producto con características de prueba.",
     },
     {
         id: "p002",
-        producto:"Producto 2",
-        descripcion:"Producto con características de prueba.", 
+        producto: "Producto 2",
+        descripcion: "Producto con características de prueba.",
     },
     {
         id: "p003",
-        producto:"Producto 3",
-        descripcion:"Producto con características de prueba.", 
+        producto: "Producto 3",
+        descripcion: "Producto con características de prueba.",
     },
     {
         id: "p004",
-        producto:"Producto 4",
-        descripcion:"Producto con características de prueba.", 
+        producto: "Producto 4",
+        descripcion: "Producto con características de prueba.",
     },
     {
         id: "p005",
-        producto:"Producto 3",
-        descripcion:"Producto con características de prueba.", 
+        producto: "Producto 3",
+        descripcion: "Producto con características de prueba.",
     }
 ];
+
 
 
 const ProductosPage = () => {
     const [productos, setProductos] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         setProductos(arregloProductosProvisional);
     }, [])
 
     return (
-        <div>
+        <div className='backgroundTables'>
             <section className="styleContentSection">
 
                 <h2 className="tableTitle">Gestión de productos</h2>
@@ -46,7 +48,9 @@ const ProductosPage = () => {
                 <p className="textTable">Para registrar un nuevo producto, pulse el botón <b>Registrar producto.</b></p>
 
                 <section className="styleOptionsTable">
-                    <button className="buttonCreate">Registrar producto</button>
+                    <Link to="/admin/productos/ingresar">
+                        <button className="buttonCreate">Registrar producto</button>
+                    </Link>
                     <div className="searchInTable">
                         <label className="labelSearch" htmlFor="buscar">Buscar: </label>
                         <input className="inputSearch" type="text" />
@@ -96,19 +100,21 @@ const TablaProductos = ({ listaProductos }) => {
                 </thead>
 
                 <tbody>
-                    {listaProductos.map((producto)=>{
-                        return(
+                    {listaProductos.map((producto) => {
+                        return (
                             <tr className="row">
-                                <td className= "cell">{producto.id}</td>
-                                <td className= "cell">{producto.producto}</td>
-                                <td className= "cell">{producto.descripcion}</td>
-                                <td className= "cell">         
-                                    <i className="far fa-eye detailIcon tooltip"> 
-                                    <span className="tooltipText">Detalles</span>
+                                <td className="cell">{producto.id}</td>
+                                <td className="cell">{producto.producto}</td>
+                                <td className="cell">{producto.descripcion}</td>
+                                <td className="cell">
+                                    <i className="far fa-eye detailIcon tooltip">
+                                        <span className="tooltipText">Detalles</span>
                                     </i>
+                                    <Link to="/admin/productos/editar">
                                     <i className="far fa-edit editIcon tooltip">
-                                    <span className="tooltipText">Editar</span>
+                                        <span className="tooltipText">Editar</span>
                                     </i>
+                                    </Link>
                                 </td>
                             </tr>
 

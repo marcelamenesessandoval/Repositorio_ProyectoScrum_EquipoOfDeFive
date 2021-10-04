@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const arregloUsuariosProvisional = [
     {
@@ -34,6 +35,7 @@ const arregloUsuariosProvisional = [
 ];
 
 
+
 const UsuariosPage = () => {
     const [usuarios, setUsuarios] = useState([]);
 
@@ -42,12 +44,12 @@ const UsuariosPage = () => {
     }, [])
 
     return (
-        <div>
+        <div className='backgroundTables'>
             <section className="styleContentSection">
 
                 <h2 className="tableTitle">Gestión de usuarios</h2>
                 <p className="textTable">A continuación, se enseña el listado de usuarios registrados. Para modificar la información de usuarios, pulse sobre el ícono editar.</p>
-            
+
                 <section className="styleOptionsTable">
                     <div className="searchInTableUser">
                         <label className="labelSearch" htmlFor="buscar">Buscar: </label>
@@ -97,26 +99,28 @@ const TablaUsuarios = ({ listaUsuarios }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {listaUsuarios.map((usuario)=>{
-                        return(
+                    {listaUsuarios.map((usuario) => {
+                        return (
                             <tr className="row">
-                                <td className= "cell">{usuario.id}</td>
-                                <td className= "cell">{usuario.nombre}</td>
-                                <td className= "cell">{usuario.rol}</td>
-                                <td className= "cell">{usuario.estado}</td>
-                                <td className= "cell">         
-                                    <i className="far fa-eye detailIcon tooltip"> 
-                                    <span className="tooltipText">Detalles</span>
+                                <td className="cell">{usuario.id}</td>
+                                <td className="cell">{usuario.nombre}</td>
+                                <td className="cell">{usuario.rol}</td>
+                                <td className="cell">{usuario.estado}</td>
+                                <td className="cell">
+                                    <i className="far fa-eye detailIcon tooltip">
+                                        <span className="tooltipText">Detalles</span>
                                     </i>
-                                    <i className="far fa-edit editIcon tooltip">
-                                    <span className="tooltipText">Editar</span>
-                                    </i>
+                                    <Link to='/admin/usuarios/editarUsuario'>
+                                        <i className="far fa-edit editIcon tooltip">
+                                            <span className="tooltipText">Editar</span>
+                                        </i>
+                                    </Link>
                                 </td>
                             </tr>
-                        ); 
+                        );
                     })}
                 </tbody>
-            </table>   
+            </table>
         </>
     )
 }

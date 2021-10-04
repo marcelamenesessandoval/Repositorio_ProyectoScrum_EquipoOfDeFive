@@ -47,7 +47,7 @@ const VentasPage = () => {
     }, [])
 
     return (
-        <div>
+        <div className='backgroundTables'>
             <section className="styleContentSection">
 
                 <h2 className="tableTitle">Gestión de ventas</h2>
