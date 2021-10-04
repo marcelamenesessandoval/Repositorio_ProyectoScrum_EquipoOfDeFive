@@ -8,7 +8,7 @@ import Index from 'pages/index';
 import LoginPage from 'pages/login';
 import RegistroPage from 'pages/registro';
 import AdminSidebar from 'pages/admin/admin';
-import NuevaVentapage from 'pages/nuevaventa'
+
 import VentasPage from 'pages/ventas';
 import ProductosPage from 'pages/admin/productos';
 import UsuariosPage from 'pages/admin/usuarios';
@@ -18,6 +18,8 @@ import AuthLayout from "layouts/AuthLayout";
 import IngresarPage from "pages/admin/productos/Ingresar";
 import EditarPage from "pages/admin/productos/editar";
 import EditarUsuario from "pages/admin/usuario/editarUsuario"
+import RegVenta from "pages/admin/ventas/regVenta";
+import EdiVenta from "pages/admin/ventas/EdiVenta";
 //import 'styles/stylesside.module.css';
 import 'styles/stylesppal.css';
 import 'styles/styleslogin.css';
@@ -38,11 +40,14 @@ function App() {
       <Router>
         <Switch>
           {/* PRIVATE */}
-          <Route exact path={['/admin', '/nuevaventa', '/ventas', '/admin/productos', '/admin/usuarios', '/admin/productos/ingresar', '/admin/productos/editar', '/admin/usuarios/editarUsuario']}>
+          <Route exact path={['/admin', '/nuevaventa', '/ventas', '/admin/productos', '/admin/usuarios', '/admin/productos/ingresar', '/admin/productos/editar', '/admin/usuarios/editarUsuario', '/ventas/ingresarVenta', '/ventas/editarVenta']}>
             <PrivateLayout>
               <Switch>
-              <Route exact path='/nuevaventa'>
-                <NuevaVentapage />
+              <Route exact path='/ventas/editarVenta'>
+                <EdiVenta />
+                </Route>
+                <Route exact path='/ventas/ingresarVenta'>
+                <RegVenta />
                 </Route>
                 <Route exact path='/ventas'>
                 <VentasPage />

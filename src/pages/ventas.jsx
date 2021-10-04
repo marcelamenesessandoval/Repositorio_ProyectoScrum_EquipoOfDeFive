@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const arregloVentasProvisional = [
     {
@@ -56,7 +57,9 @@ const VentasPage = () => {
                 <p className="textTable">Para registrar un nuevo producto, pulse el botón <b>Registrar venta.</b></p>
 
                 <section className="styleOptionsTable">
-                    <button className="buttonCreate">Registrar venta</button>
+                    <Link to='/ventas/ingresarVenta'>
+                        <button className="buttonCreate">Registrar venta</button>
+                    </Link>
                     <div className="searchInTable">
                         <label className="labelSearch" htmlFor="buscar">Buscar: </label>
                         <input className="inputSearch" type="text" />
@@ -108,21 +111,23 @@ const TablaVentas = ({ listaVentas }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {listaVentas.map((venta)=>{
-                        return(
+                    {listaVentas.map((venta) => {
+                        return (
                             <tr className="row">
-                                <td className= "cell">{venta.id}</td>
-                                <td className= "cell">{venta.producto}</td>
-                                <td className= "cell">{venta.nombreCliente}</td>
-                                <td className= "cell">{venta.docCliente}</td>
-                                <td className= "cell">{venta.fechaVenta}</td>
-                                <td className= "cell">         
-                                    <i className="far fa-eye detailIcon tooltip"> 
-                                    <span className="tooltipText">Detalles</span>
+                                <td className="cell">{venta.id}</td>
+                                <td className="cell">{venta.producto}</td>
+                                <td className="cell">{venta.nombreCliente}</td>
+                                <td className="cell">{venta.docCliente}</td>
+                                <td className="cell">{venta.fechaVenta}</td>
+                                <td className="cell">
+                                    <i className="far fa-eye detailIcon tooltip">
+                                        <span className="tooltipText">Detalles</span>
                                     </i>
+                                    <Link to='/ventas/editarVenta'>
                                     <i className="far fa-edit editIcon tooltip">
-                                    <span className="tooltipText">Editar</span>
+                                        <span className="tooltipText">Editar</span>
                                     </i>
+                                    </Link>
                                 </td>
                             </tr>
                         );
