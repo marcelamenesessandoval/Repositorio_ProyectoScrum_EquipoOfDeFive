@@ -9,9 +9,9 @@ function PiePaginaPpal() {
       </div>
       <div className="redes_soc">
           <p className="redes_text">Siguenos:</p>
-          <i className="fab fa-facebook icon_size"/>
-          <i className="fab fa-instagram icon_size" />
-          <i className="fab fa-youtube icon_size" />
+          <i className="fab fa-facebook icon_size fondoiconos"/>
+          <i className="fab fa-instagram icon_size  fondoiconos" />
+          <i className="fab fa-youtube icon_size  fondoiconos" />
       </div>
       </>
     );

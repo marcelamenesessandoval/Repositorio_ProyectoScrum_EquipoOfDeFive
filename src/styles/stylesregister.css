@@ -51,11 +51,12 @@ body{
   }
   
   .registro input[type="submit"]{
+    padding: 10px;
     width: 100%;
     border: none;
     outline: none;
-    height: 55px;
-    background: hsl(239, 46%, 31%);
+    height: 40px;
+    background: #009688;
     color: #fff;
     font-size: 18px;
     border-radius: 15px;
