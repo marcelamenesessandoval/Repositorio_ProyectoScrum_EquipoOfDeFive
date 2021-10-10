@@ -1,11 +1,20 @@
 
+  .backgroundTables{
+    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(./fondosoft.jpeg);
+    width: inherit;
+    background-size: cover;
+    background-position-x: center;
+  }
+
 
   .styleContentSection{
     justify-content: center;
+    align-items: center;
+    align-content: center;
     justify-self: center;
-    margin: 5px;
-    margin-top: 45px;
-    width:100%;
+    justify-items: center;
+    margin: 6%;
+    width:inherit;
     /*box-shadow: 7px 13px 37px #000;
     opacity: 90%;
     border-radius: 4px;
@@ -27,36 +36,42 @@
   }
   
   .styleOptionsTable{
-      display: flex;
-      margin: 3%;
+      display:block;
+      width: 97%;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2%;
   }
 
   .searchInTable{
-      
-      position: relative;
-      align-items: center;
-      float:right;
-      left:420px;
-      display: flex;
+    justify-self: center; 
+    align-items:center;
+    text-align: center;
+    justify-content: left;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    float: right;
 
   }
 
   .searchInTableUser{
-    position: relative;
-    left: 65%;
+    width: 100%;
+    justify-self: center; 
+    align-items:center;
+    text-align: center;
+    justify-content: left;
     display: flex;
-    justify-items: center;
-    align-items: center;
+    margin-top: 3%;
+    /*float: right;*/
 }
 
 
   .buttonCreate{
-    
-    height: 10%;
+    height: 40px;
     align-self: center;
     color: white;
     background-color: rgb(70, 165, 186);
-    height: 40px;
     text-align: center;
     padding: 4px;
     position: relative;
@@ -75,6 +90,7 @@
     font-family:sans-serif;
     font-size: medium;
     color: white;
+    font-weight: bold;
     
   }
   
@@ -87,7 +103,6 @@
     height: 23px;
     border-radius: 15px;
     border: 2px solid #009688;
-
   }
 
   .inputSearch:focus{
@@ -97,13 +112,26 @@
   
   
   .table{
+    justify-self: center;
     border-collapse: collapse;
-    margin: 3%;
-    padding: 3%;
+    margin: 2%;
+    padding: 2%;
     border: white 2px solid;
     font-family: sans-serif;
-    width:900px;
+    width:90%;
   }
+
+    /*NUEVO*/ 
+    .table tr:nth-child(odd){
+      background-color: white;
+    } 
+  
+    /*NUEVO*/
+    .table tr:hover{
+      background-color: rgb(201, 204, 204);
+      cursor: pointer;
+    }
+
 
   .column{
     text-align: center;
@@ -129,7 +157,10 @@
     font-family: sans-serif;
     border: white 2px solid;
   }
- 
+
+  .iconColumn{
+    width: 12%;
+  }
 
   .row{
     text-align: center;
@@ -170,6 +201,17 @@
     color: rgb(57, 87, 94);
   }
   
+    /*NUEVO*/
+    .deleteIcon{
+      font-size: 130%;
+      margin-left: 8%;
+      margin-right: 8%;
+      cursor: pointer;
+      color: rgb(57, 87, 94);
+    }
+  
+  
+
   .tooltip{
     position: relative;
   }
@@ -181,6 +223,11 @@
     display: block;
   }
 
+    /*NUEVO*/
+    .deleteIcon:hover .tooltipText{
+      display: block;
+    }
+  
 
   .tooltipText{
     text-align: center;
@@ -197,7 +244,7 @@
     border-radius: 5px;
     bottom: 10px;
     left: 20px;
-    width: 290%;
+    width: 60px;
     font-family: 'Work Sans', sans-serif;
     font-size: medium;
     font-weight: bold;
@@ -254,15 +301,59 @@
   }
 
 
-  .backgroundTables{
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(./fondosoft.jpeg);
-    width: inherit;
-    background-size: cover;
-    background-position-x: center;
+  /*NUEVO*/
+  .buttonDialogDelete{
+    width: 130px;
+    height: 40px;
+    color: white;
+    background-color: rgb(70, 165, 186);
+    margin: 10px;
+    padding: 4px;
+    position: relative;
+    overflow: hidden;
   }
 
-  
+
+  .buttonDialogDelete:hover{
+    color: white;
+    background-color: rgb(59, 140, 158);
+    cursor: pointer;
+    transform: scale(1.1);
+  }
   
 
 
-  
+
+
+.titleDialog{
+  background-color: #009688;
+  color: white;
+  text-align: center;
+  padding: 3px;
+  justify-content: center;
+}
+
+
+.textDelete{
+  font-family: sans-serif;
+  margin: 10px;
+  text-align: center;
+}
+
+.dialog{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10%;
+}
+
+.divButtonDialog{
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  display: flex;
+  margin: 10px;
+  margin-top: 0%;
+  padding: 5px
+}
