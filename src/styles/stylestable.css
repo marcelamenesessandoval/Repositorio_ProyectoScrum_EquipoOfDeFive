@@ -13,7 +13,7 @@
     align-content: center;
     justify-self: center;
     justify-items: center;
-    margin: 6%;
+    margin: 3%;
     width:inherit;
     /*box-shadow: 7px 13px 37px #000;
     opacity: 90%;
@@ -338,6 +338,7 @@
   font-family: sans-serif;
   margin: 10px;
   text-align: center;
+  color: rgb(57, 87, 94);
 }
 
 .dialog{
