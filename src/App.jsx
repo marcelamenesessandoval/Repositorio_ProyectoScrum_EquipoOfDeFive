@@ -8,7 +8,6 @@ import Index from 'pages/index';
 import LoginPage from 'pages/login';
 import RegistroPage from 'pages/registro';
 import AdminSidebar from 'pages/admin/admin';
-
 import VentasPage from 'pages/ventas';
 import ProductosPage from 'pages/admin/productos';
 import UsuariosPage from 'pages/admin/usuarios';

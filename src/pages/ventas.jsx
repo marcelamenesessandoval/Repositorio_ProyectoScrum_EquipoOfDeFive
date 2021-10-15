@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -60,10 +61,12 @@ const VentasPage = () => {
                     <Link to='/ventas/ingresarVenta'>
                         <button className="buttonCreate">Registrar venta</button>
                     </Link>
+
                     <div className="searchInTable">
                         <label className="labelSearch" htmlFor="buscar">Buscar: </label>
                         <input className="inputSearch" type="text" />
                     </div>
+                
                 </section>
 
                 <TablaVentas listaVentas={ventas} />
