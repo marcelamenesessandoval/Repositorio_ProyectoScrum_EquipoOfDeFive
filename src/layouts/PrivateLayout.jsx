@@ -1,8 +1,15 @@
 
+import PrivateRoute from 'components/privateRoute';
 import Sidebar from 'components/Sidebar';
 import React from 'react'
 
+
 const PrivateLayout = ({children}) => {
+    <PrivateRoute>
+
+        
+    </PrivateRoute>
+    
 
     const BodySidebar = {
         display: 'flex',

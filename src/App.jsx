@@ -26,6 +26,8 @@ import 'styles/styleslogin.css';
 import 'styles/stylesregister.css';
 import 'styles/stylesproduct.css';
 import 'styles/stylestable.css';
+import { Auth0Provider } from "@auth0/auth0-react";
+
 
 
 
@@ -36,7 +38,12 @@ import 'styles/stylestable.css';
 
 function App() {
   return (
-    <div>
+    <Auth0Provider
+    domain="misiontic-equipo-of-de-five.us.auth0.com"
+    clientId="6g2j9VBu7LSi57EG1ugKpa5xCvXKVRMK"
+    redirectUri={window.location.origin}
+    >
+          <div>
       <Router>
         <Switch>
           {/* PRIVATE */}
@@ -75,6 +82,7 @@ function App() {
           </Route>
           
           {/* AUTHOLAY0UT */}
+          
           <Route path={['/login','/registro']}>
             <AuthLayout>
               <Switch>
@@ -99,6 +107,8 @@ function App() {
         </Switch>
       </Router>
     </div>
+    </Auth0Provider>
+
   );
 }
 
