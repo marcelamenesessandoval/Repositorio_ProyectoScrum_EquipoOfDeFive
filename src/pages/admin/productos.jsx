@@ -5,46 +5,6 @@ import axios from "axios";
 
 
 
-// const arregloProductosProvisional = [
-//     {
-//         id: "p001",
-//         producto: "Producto 1",
-//         descripcion: "Producto con características de prueba.",
-//         valorUnitario: 30000,
-//         estado: "Disponible",
-//     },
-//     {
-//         id: "p002",
-//         producto: "Producto 2",
-//         descripcion: "Producto con características de prueba.",
-//         valorUnitario: 22000,
-//         estado: "Disponible",
-//     },
-//     {
-//         id: "p003",
-//         producto: "Producto 3",
-//         descripcion: "Producto con características de prueba.",
-//         valorUnitario: 76000,
-//         estado: "Disponible",
-//     },
-//     {
-//         id: "p004",
-//         producto: "Producto 4",
-//         descripcion: "Producto con características de prueba.",
-//         valorUnitario: 30000,
-//         estado: "Disponible",
-//     },
-//     {
-//         id: "p005",
-//         producto: "Producto 3",
-//         descripcion: "Producto con características de prueba.",
-//         valorUnitario: 30000,
-//         estado: "Disponible",
-//     }
-// ];
-
-
-
 const ProductosPage = () => {
     const [productos, setProductos] = useState([]);
     const [mostrarTabla, setMostrarTabla] = useState(true);
@@ -53,7 +13,7 @@ const ProductosPage = () => {
 
 
     const obtenerProductos = async () => {
-        const options = { method: 'GET', url: '' };
+        const options = { method: 'GET', url: 'http://localhost:5000/productos' };
         await axios
             .request(options)
             .then(function (response) {
@@ -97,7 +57,7 @@ const ProductosPage = () => {
 
             {mostrarTabla ?
                 <TablaProductos listaProductos={productos}
-                    setAgregarProducto={setEjecutarConsulta} /> :
+                setEjecutarConsulta={setEjecutarConsulta} /> :
                 <IngresarPage
                     setMostrarTabla={setMostrarTabla}
                     listaProductos={productos}
@@ -116,10 +76,14 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
     const [busqueda, setBusqueda] = useState('');
     const [productosFiltrados, setProductosFiltrados] = useState(listaProductos);
 
+    console.log("Lista de productos", listaProductos)
+    console.log("Filtrados", productosFiltrados)
+
     useEffect(() => {
         console.log("Este es el listado de productos", listaProductos)
     }, [listaProductos]);
 
+    console.log("Lista:", listaProductos);
 
 
     useEffect(() => {
@@ -128,8 +92,10 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
             listaProductos.filter((elemento) => {
                 console.log("Elemento", elemento);
                 return JSON.stringify(elemento).toLowerCase().includes(busqueda.toLowerCase());
+
             })
         );
+        console.log("Revisión productos fitrados", productosFiltrados)
     }, [busqueda, listaProductos]);
 
 
@@ -165,7 +131,12 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
 
                 <tbody>
                     {productosFiltrados.map((producto) => {
-                        return <FilaProducto key={nanoid} producto={producto} setEjecutarConsulta={setEjecutarConsulta} />;
+                        return (<FilaProducto
+                            producto={producto}
+                            setEjecutarConsulta={setEjecutarConsulta}
+                            key={nanoid()}
+                        />
+                        );
                     })}
 
                 </tbody>
@@ -191,18 +162,17 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
 }
 
 
-const FilaProducto = (setMostrarTabla, producto, setEjecutarConsulta) => {
+const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
     const [openDialog, setOpenDialog] = useState(false);
     const [edit, setEdit] = useState(false);
 
-    if (!edit) {
-        EditProducto(producto, setMostrarTabla);
-    }
+    console.log("Producto:", producto);
+
 
     const eliminarProducto = async () => {
         const options = {
             method: 'DELETE',
-            url: '',
+            url: 'http://localhost:5000/productos/eliminar',
             headers: { 'Content-Type': 'application/json' },
             data: { id: producto._id },
         };
@@ -214,19 +184,19 @@ const FilaProducto = (setMostrarTabla, producto, setEjecutarConsulta) => {
                 console.log(response.data);
                 alert("El producto se ha eliminado correctamente");
                 setEjecutarConsulta(true);
-     
             })
+
             .catch(function (error) {
-                console.error(error);
+                console.error("error", error);
                 alert("Hubo un error al eliminar el producto");
             });
-           setOpenDialog(false);
+        setOpenDialog(false);
     };
 
     return (
 
         <tr className="row">
-            <td className="cell">{producto.id}</td>
+            <td className="cell">{producto.idProduct}</td>
             <td className="cell">{producto.producto}</td>
             <td className="cell">{producto.descripcion}</td>
             <td className="cell">
@@ -286,9 +256,9 @@ const IngresarPage = ({ setMostrarTabla, listaProductos, setAgregarProducto }) =
 
         const options = {
             method: 'POST',
-            url: '',
+            url: 'http://localhost:5000/productos/nuevo',
             headers: { 'Content-Type': 'application/json' },
-            data: { id: nuevoProducto.id, producto: nuevoProducto.producto, descripcion: nuevoProducto.descripcion, valorUnitario: nuevoProducto.valorUnitario, estado: nuevoProducto.estado },
+            data: { idProduct: nuevoProducto.idProduct, producto: nuevoProducto.producto, descripcion: nuevoProducto.descripcion, valorUnitario: nuevoProducto.valorUnitario, estado: nuevoProducto.estado }
         };
 
 
@@ -316,7 +286,7 @@ const IngresarPage = ({ setMostrarTabla, listaProductos, setAgregarProducto }) =
             <section className="form-registro">
                 <form ref={form} onSubmit={submitForm}>
                     <h4>Registro de Producto</h4>
-                    <input className="controls" type="number" name="id" placeholder="Identificador unico" max="9999" required />
+                    <input className="controls" type="number" name="idProduct" placeholder="Identificador unico" required />
                     <input className="controls" type="text" name="producto" placeholder="Nombre del Producto" required />
                     <input className="controls descripcion" type="text" name="descripcion" placeholder="Añadir una descripcion del producto" required />
                     <input className="controls " type="number" name="valorUnitario" placeholder="Valor Unitario" required />
@@ -341,48 +311,48 @@ const IngresarPage = ({ setMostrarTabla, listaProductos, setAgregarProducto }) =
 
 
 
-const EditProducto = ({ producto, setMostrarTabla }) => {
+// const EditProducto = ({ producto, setMostrarTabla }) => {
 
-    const form = useRef(null);
+//     const form = useRef(null);
 
-    const submitForm = async (e) => {
-        e.preventDefault();
-        const fd = new FormData(form.current);
-        const nuevoProducto = {};
-        fd.forEach((value, key) => {
-            nuevoProducto[key] = value;
-        });
-
-
-
-        return (
-            <div className="fondo">
-                <section className="form-registro">
-                    <form ref={form} onSubmit={submitForm}>
-                        <h4>Editar producto</h4>
-                        <input className="controls" type="number" name="id" placeholder="Identificador unico" max="9999" required defaultValue={producto.id} />
-                        <input className="controls" type="text" name="producto" placeholder="Nombre del Producto" required defaultValue={producto.producto} />
-                        <input className="controls descripcion" type="text" name="descripcion" placeholder="Añadir una descripcion del producto" required defaultValue={producto.descripcion} />
-                        <input className="controls " type="number" name="valorUnitario" placeholder="Valor Unitario" required defaultValue={producto.valorUnitario} />
-                        <select className="controls mouse" name="estado" defaultValue={0} required defaultValue={producto.estado}>
-                            <option disabled value={0}>Estado del Producto</option>
-                            <option >Disponible</option>
-                            <option >No Disponible</option>
-                        </select>
-                        {/* Botón provisional luego agregar el alert*/}
-                        <button className="botonRegistro" type="submit">
-                            Enviar dos
-                        </button>
-                        {/* <input className="botonRegistro" type="submit" onClick={() => alert("El producto se ha añadido correctamente")} defaultValue="Enviar" /> */}
-                    </form>
+//     const submitForm = async (e) => {
+//         e.preventDefault();
+//         const fd = new FormData(form.current);
+//         const nuevoProducto = {};
+//         fd.forEach((value, key) => {
+//             nuevoProducto[key] = value;
+//         });
 
 
-                </section>
-            </div>
-        );
-    }
 
-}
+//         return (
+//             <div className="fondo">
+//                 <section className="form-registro">
+//                     <form ref={form} onSubmit={submitForm}>
+//                         <h4>Editar producto</h4>
+//                         <input className="controls" type="number" name="idProduct" placeholder="Identificador unico" max="9999" required defaultValue={producto.idProduct} />
+//                         <input className="controls" type="text" name="producto" placeholder="Nombre del Producto" required defaultValue={producto.producto} />
+//                         <input className="controls descripcion" type="text" name="descripcion" placeholder="Añadir una descripcion del producto" required defaultValue={producto.descripcion} />
+//                         <input className="controls " type="number" name="valorUnitario" placeholder="Valor Unitario" required defaultValue={producto.valorUnitario} />
+//                         <select className="controls mouse" name="estado" defaultValue={0} required defaultValue={producto.estado}>
+//                             <option disabled value={0}>Estado del Producto</option>
+//                             <option >Disponible</option>
+//                             <option >No Disponible</option>
+//                         </select>
+//                         {/* Botón provisional luego agregar el alert*/}
+//                         <button className="botonRegistro" type="submit">
+//                             Enviar dos
+//                         </button>
+//                         {/* <input className="botonRegistro" type="submit" onClick={() => alert("El producto se ha añadido correctamente")} defaultValue="Enviar" /> */}
+//                     </form>
+
+
+//                 </section>
+//             </div>
+//         );
+//     }
+
+// }
 
 
 
