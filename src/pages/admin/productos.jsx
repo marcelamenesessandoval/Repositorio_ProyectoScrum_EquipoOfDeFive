@@ -91,7 +91,6 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
 
             })
         );
-        console.log("Revisión productos fitrados", productosFiltrados)
     }, [busqueda, listaProductos]);
 
 
@@ -315,96 +314,96 @@ const IngresarPage = ({ setMostrarTabla, listaProductos, setAgregarProducto }) =
 
 
 
-const EditarProducto = ({ producto, setMostrarTabla, setEjecutarConsulta }) => {
-    const [edit, setEdit] = useState(false);
-    const [infoEditada, setInfoEditada] = useState({
-        data: {
-            idProduct: producto.idProduct, producto: producto.producto, descripcion: producto.descripcion,
-            valorUnitario: producto.valorUnitario, estado: producto.estado
-        }
-    });
+// const EditarProducto = ({ producto, setMostrarTabla, setEjecutarConsulta }) => {
+//     const [edit, setEdit] = useState(false);
+//     const [infoEditada, setInfoEditada] = useState({
+//         data: {
+//             idProduct: producto.idProduct, producto: producto.producto, descripcion: producto.descripcion,
+//             valorUnitario: producto.valorUnitario, estado: producto.estado
+//         }
+//     });
 
-    const form = useRef(null);
+//     const form = useRef(null);
 
-    const submitForm = async (e) => {
-        e.preventDefault();
-        const fd = new FormData(form.current);
-        const nuevoProducto = {};
-        fd.forEach((value, key) => {
-            nuevoProducto[key] = value;
-        });
+//     const submitForm = async (e) => {
+//         e.preventDefault();
+//         const fd = new FormData(form.current);
+//         const nuevoProducto = {};
+//         fd.forEach((value, key) => {
+//             nuevoProducto[key] = value;
+//         });
 
-        const options = {
-            method: 'PATCH',
-            url: 'http://localhost:5000/productos/' + producto._id + '/',
-            headers: { 'Content-Type': 'application/json' },
-            data: { ...infoEditada, id: producto._id },
-        };
-
-
-        await axios
-            .request(options)
-            .then(function (response) {
-                console.log(response.data);
-                alert("El producto se ha actualizado correctamente");
-                setEdit(false);
-                setEjecutarConsulta(true);
-            })
-            .catch(function (error) {
-                alert("Hubo un error al actualizar el producto");
-                console.error(error);
-            });
+//         const options = {
+//             method: 'PATCH',
+//             url: 'http://localhost:5000/productos/' + producto._id + '/',
+//             headers: { 'Content-Type': 'application/json' },
+//             data: { ...infoEditada, id: producto._id },
+//         };
 
 
-        setMostrarTabla(true)
-
-    };
-
-
-    return (
-        <div className="fondo">
-            <section className="form-registro">
-                <form ref={form} onSubmit={submitForm}>
-                    <h4>Editar producto</h4>
-                    <input className="controls" type="number" name="idProduct" placeholder="Identificador unico" max="9999" required value={infoEditada.idProduct}
-                        onChange={(e) =>
-                            setInfoEditada({ ...infoEditada, idProduct: e.target.value })
-                        }
-                    />
-                    <input className="controls" type="text" name="producto" placeholder="Nombre del Producto" required value={infoEditada.producto}
-                        onChange={(e) =>
-                            setInfoEditada({ ...infoEditada, producto: e.target.value })
-                        } />
-                    <input className="controls descripcion" type="text" name="descripcion" placeholder="Añadir una descripcion del producto" required value={infoEditada.descripcion}
-                        onChange={(e) =>
-                            setInfoEditada({ ...infoEditada, descripcion: e.target.value })
-                        }
-                    />
-                    <input className="controls " type="number" name="valorUnitario" placeholder="Valor Unitario" required value={infoEditada.valorUnitario}
-                        onChange={(e) =>
-                            setInfoEditada({ ...infoEditada, valorUnitario: e.target.value })
-                        } />
-                    <select className="controls mouse" name="estado" defaultValue={0} required defaultValue={producto.estado}
-                        onChange={(e) =>
-                            setInfoEditada({ ...infoEditada, estado: e.target.value })
-                        }
-                    >
-                        <option disabled value={0}>Estado del Producto</option>
-                        <option >Disponible</option>
-                        <option >No Disponible</option>
-                    </select>
-                    {/* Botón provisional luego agregar el alert*/}
-                    <button className="botonRegistro" type="submit">
-                        Enviar
-                    </button>
-                    {/* <input className="botonRegistro" type="submit" onClick={() => alert("El producto se ha añadido correctamente")} defaultValue="Enviar" /> */}
-                </form>
+//         await axios
+//             .request(options)
+//             .then(function (response) {
+//                 console.log(response.data);
+//                 alert("El producto se ha actualizado correctamente");
+//                 setEdit(false);
+//                 setEjecutarConsulta(true);
+//             })
+//             .catch(function (error) {
+//                 alert("Hubo un error al actualizar el producto");
+//                 console.error(error);
+//             });
 
 
-            </section>
-        </div>
-    );
-}
+//         setMostrarTabla(true)
+
+//     };
+
+
+//     return (
+//         <div className="fondo">
+//             <section className="form-registro">
+//                 <form ref={form} onSubmit={submitForm}>
+//                     <h4>Editar producto</h4>
+//                     <input className="controls" type="number" name="idProduct" placeholder="Identificador unico" max="9999" required value={infoEditada.idProduct}
+//                         onChange={(e) =>
+//                             setInfoEditada({ ...infoEditada, idProduct: e.target.value })
+//                         }
+//                     />
+//                     <input className="controls" type="text" name="producto" placeholder="Nombre del Producto" required value={infoEditada.producto}
+//                         onChange={(e) =>
+//                             setInfoEditada({ ...infoEditada, producto: e.target.value })
+//                         } />
+//                     <input className="controls descripcion" type="text" name="descripcion" placeholder="Añadir una descripcion del producto" required value={infoEditada.descripcion}
+//                         onChange={(e) =>
+//                             setInfoEditada({ ...infoEditada, descripcion: e.target.value })
+//                         }
+//                     />
+//                     <input className="controls " type="number" name="valorUnitario" placeholder="Valor Unitario" required value={infoEditada.valorUnitario}
+//                         onChange={(e) =>
+//                             setInfoEditada({ ...infoEditada, valorUnitario: e.target.value })
+//                         } />
+//                     <select className="controls mouse" name="estado" defaultValue={0} required defaultValue={producto.estado}
+//                         onChange={(e) =>
+//                             setInfoEditada({ ...infoEditada, estado: e.target.value })
+//                         }
+//                     >
+//                         <option disabled value={0}>Estado del Producto</option>
+//                         <option >Disponible</option>
+//                         <option >No Disponible</option>
+//                     </select>
+//                     {/* Botón provisional luego agregar el alert*/}
+//                     <button className="botonRegistro" type="submit">
+//                         Enviar
+//                     </button>
+//                     {/* <input className="botonRegistro" type="submit" onClick={() => alert("El producto se ha añadido correctamente")} defaultValue="Enviar" /> */}
+//                 </form>
+
+
+//             </section>
+//         </div>
+//     );
+// }
 
 
 

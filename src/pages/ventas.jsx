@@ -91,7 +91,6 @@ const TablaVentas = ({ listaVentas, setEjecutarConsulta }) => {
 
             })
         );
-        console.log("Revisión ventas fitradas", ventasFiltradas)
     }, [busqueda, listaVentas]);
 
 

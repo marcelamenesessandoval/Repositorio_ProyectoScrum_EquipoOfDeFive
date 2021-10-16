@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Dialog from '@mui/material/Dialog';
 import { nanoid } from 'nanoid';
 import axios from "axios";
@@ -7,7 +7,9 @@ import axios from "axios";
 
 const UsuariosPage = () => {
     const [usuarios, setUsuarios] = useState([]);
-    const [mostrarTabla, setMostrarTabla] = useState(true);
+    const [mostrarTabla
+        // , setMostrarTabla
+    ] = useState(true);
     const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
 
     const obtenerUsuarios = async () => {
@@ -73,7 +75,6 @@ const TablaUsuarios = ({ listaUsuarios, setEjecutarConsulta }) => {
 
             })
         );
-        console.log("Revisión usuarios fitradoss", usuariosFiltrados)
     }, [busqueda, listaUsuarios]);
 
 
