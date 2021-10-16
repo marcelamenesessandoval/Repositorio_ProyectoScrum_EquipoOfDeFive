@@ -4,7 +4,6 @@ import { nanoid } from 'nanoid';
 import axios from "axios";
 
 
-
 const ProductosPage = () => {
     const [productos, setProductos] = useState([]);
     const [mostrarTabla, setMostrarTabla] = useState(true);
@@ -51,7 +50,6 @@ const ProductosPage = () => {
 
 
 
-
     return (
         <div className="styleContentSection">
 
@@ -82,9 +80,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
     useEffect(() => {
         console.log("Este es el listado de productos", listaProductos)
     }, [listaProductos]);
-
-    console.log("Lista:", listaProductos);
-
+    
 
     useEffect(() => {
         console.log('Búsqueda', busqueda);
@@ -107,9 +103,6 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
             <p className="textTable">A continuación, se enseña el listado de productos registrados. Para registrar un nuevo producto, pulse el botón <b>Registrar producto.</b></p>
 
             <section className="styleOptionsTable">
-                {/* <Link to="/admin/productos/ingresar">
-                    <button className="buttonCreate">Registrar producto</button>
-                </Link> */}
                 <div className="searchInTable">
                     <label className="labelSearch" htmlFor="buscar">Buscar: </label>
                     <input
@@ -172,7 +165,7 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
     const eliminarProducto = async () => {
         const options = {
             method: 'DELETE',
-            url: 'http://localhost:5000/productos/eliminar',
+            url: 'http://localhost:5000/productos/'+producto._id +'/',
             headers: { 'Content-Type': 'application/json' },
             data: { id: producto._id },
         };
@@ -182,8 +175,8 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
             .request(options)
             .then(function (response) {
                 console.log(response.data);
-                alert("El producto se ha eliminado correctamente");
                 setEjecutarConsulta(true);
+                alert("El producto se ha eliminado correctamente");
             })
 
             .catch(function (error) {
@@ -256,7 +249,7 @@ const IngresarPage = ({ setMostrarTabla, listaProductos, setAgregarProducto }) =
 
         const options = {
             method: 'POST',
-            url: 'http://localhost:5000/productos/nuevo',
+            url: 'http://localhost:5000/productos',
             headers: { 'Content-Type': 'application/json' },
             data: { idProduct: nuevoProducto.idProduct, producto: nuevoProducto.producto, descripcion: nuevoProducto.descripcion, valorUnitario: nuevoProducto.valorUnitario, estado: nuevoProducto.estado }
         };
@@ -280,13 +273,12 @@ const IngresarPage = ({ setMostrarTabla, listaProductos, setAgregarProducto }) =
 
 
 
-
     return (
         <div className="fondo">
             <section className="form-registro">
                 <form ref={form} onSubmit={submitForm}>
                     <h4>Registro de Producto</h4>
-                    <input className="controls" type="number" name="idProduct" placeholder="Identificador unico" required />
+                    <input className="controls" type="number" name="idProduct" placeholder="Identificador unico producto" required />
                     <input className="controls" type="text" name="producto" placeholder="Nombre del Producto" required />
                     <input className="controls descripcion" type="text" name="descripcion" placeholder="Añadir una descripcion del producto" required />
                     <input className="controls " type="number" name="valorUnitario" placeholder="Valor Unitario" required />
@@ -295,13 +287,11 @@ const IngresarPage = ({ setMostrarTabla, listaProductos, setAgregarProducto }) =
                         <option >Disponible</option>
                         <option >No Disponible</option>
                     </select>
-                    {/* Botón provisional luego agregar el alert*/}
+       
                     <button className="botonRegistro" type="submit">
-                        Enviar dos
+                        Enviar 
                     </button>
-                    {/* <input className="botonRegistro" type="submit" onClick={() => alert("El producto se ha añadido correctamente")} defaultValue="Enviar" /> */}
                 </form>
-
 
             </section>
         </div>
