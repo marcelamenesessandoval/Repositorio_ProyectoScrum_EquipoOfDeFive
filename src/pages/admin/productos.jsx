@@ -218,7 +218,7 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
                 <Dialog fullWidth maxWidth="sm" className="dialog" open={openDialog}>
                     <h3 className="titleDialog">Confirmar eliminación</h3>
                     <div>
-                        <p className="textDelete">¿Está seguro de eliminar el producto?</p>
+                        <p className="textDelete">¿Está seguro de eliminar este producto?</p>
                     </div>
                     <div className="divButtonDialog">
                         <button
