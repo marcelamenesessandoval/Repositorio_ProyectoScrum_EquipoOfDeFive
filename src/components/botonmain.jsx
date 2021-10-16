@@ -14,4 +14,5 @@ const BotonMain = ({ Tipo }) => {
   )
 };
 
+
 export default BotonMain;

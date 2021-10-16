@@ -36,6 +36,10 @@ import { Auth0Provider } from "@auth0/auth0-react";
 
 
 
+
+
+
+
 function App() {
   return (
     <Auth0Provider
@@ -83,7 +87,7 @@ function App() {
           
           {/* AUTHOLAY0UT */}
           
-          <Route path={['/login','/registro']}>
+          {/* <Route path={['/login','/registro']}>
             <AuthLayout>
               <Switch>
                 <Route exact path='/login'>
@@ -94,7 +98,7 @@ function App() {
                 </Route>
               </Switch>
             </AuthLayout>
-          </Route>
+          </Route> */}
           
           {/* PRUBLIC */}
           <Route exact path={['/']}>
