@@ -8,6 +8,7 @@ import Index from 'pages/index';
 import LoginPage from 'pages/login';
 import RegistroPage from 'pages/registro';
 import AdminSidebar from 'pages/admin/admin';
+
 import VentasPage from 'pages/ventas';
 import ProductosPage from 'pages/admin/productos';
 import UsuariosPage from 'pages/admin/usuarios';
@@ -86,7 +87,7 @@ function App() {
           
           {/* AUTHOLAY0UT */}
           
-          {/* <Route path={['/login','/registro']}>
+          <Route path={['/login','/registro']}>
             <AuthLayout>
               <Switch>
                 <Route exact path='/login'>
@@ -97,7 +98,7 @@ function App() {
                 </Route>
               </Switch>
             </AuthLayout>
-          </Route> */}
+          </Route>
           
           {/* PRUBLIC */}
           <Route exact path={['/']}>
