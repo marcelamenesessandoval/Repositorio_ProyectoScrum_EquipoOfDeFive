@@ -55,7 +55,7 @@ const ProductosPage = () => {
 
             {mostrarTabla ?
                 <TablaProductos listaProductos={productos}
-                setEjecutarConsulta={setEjecutarConsulta} /> :
+                    setEjecutarConsulta={setEjecutarConsulta} /> :
                 <IngresarPage
                     setMostrarTabla={setMostrarTabla}
                     listaProductos={productos}
@@ -80,7 +80,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
     useEffect(() => {
         console.log("Este es el listado de productos", listaProductos)
     }, [listaProductos]);
-    
+
 
     useEffect(() => {
         console.log('Búsqueda', busqueda);
@@ -156,8 +156,8 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
 
 
 const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
-    const [openDialog, setOpenDialog] = useState(false);
     const [edit, setEdit] = useState(false);
+    const [openDialog, setOpenDialog] = useState(false);
 
     console.log("Producto:", producto);
 
@@ -165,7 +165,7 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
     const eliminarProducto = async () => {
         const options = {
             method: 'DELETE',
-            url: 'http://localhost:5000/productos/'+producto._id +'/',
+            url: 'http://localhost:5000/productos/' + producto._id + '/',
             headers: { 'Content-Type': 'application/json' },
             data: { id: producto._id },
         };
@@ -186,6 +186,9 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
         setOpenDialog(false);
     };
 
+
+
+
     return (
 
         <tr className="row">
@@ -200,7 +203,13 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
                 <i className="far fa-edit editIcon tooltip"
                     onClick={() => setEdit(!edit)}>
                     <span className="tooltipText">Editar</span>
-                </i>
+           
+                {/* <EditarProducto 
+                producto={producto}
+                setMostrarTabla={setMostrarTabla}
+                setEjecutarConsulta={setEjecutarConsulta}  */}
+          
+                </i> 
 
 
                 <i class="fas fa-trash-alt deleteIcon tooltip"
@@ -278,18 +287,23 @@ const IngresarPage = ({ setMostrarTabla, listaProductos, setAgregarProducto }) =
             <section className="form-registro">
                 <form ref={form} onSubmit={submitForm}>
                     <h4>Registro de Producto</h4>
+                    {/* <label htmlFor="idProduct" className="labelForm">Identificador único de producto</label> */}
                     <input className="controls" type="number" name="idProduct" placeholder="Identificador unico producto" required />
+                    {/* <label htmlFor="producto" className="labelForm">Nombre del producto</label> */}
                     <input className="controls" type="text" name="producto" placeholder="Nombre del Producto" required />
+                    {/* <label htmlFor="descripcion" className="labelForm">Descripción del producto</label> */}
                     <input className="controls descripcion" type="text" name="descripcion" placeholder="Añadir una descripcion del producto" required />
+                    {/* <label htmlFor="valorUnitario" className="labelForm">Valor unitario del producto</label> */}
                     <input className="controls " type="number" name="valorUnitario" placeholder="Valor Unitario" required />
+                    {/* <label htmlFor="estado" className="labelForm">Estado</label> */}
                     <select className="controls mouse" name="estado" defaultValue={0} required>
                         <option disabled value={0}>Estado del Producto</option>
                         <option >Disponible</option>
                         <option >No Disponible</option>
                     </select>
-       
+
                     <button className="botonRegistro" type="submit">
-                        Enviar 
+                        Enviar
                     </button>
                 </form>
 
@@ -301,49 +315,96 @@ const IngresarPage = ({ setMostrarTabla, listaProductos, setAgregarProducto }) =
 
 
 
-// const EditProducto = ({ producto, setMostrarTabla }) => {
+const EditarProducto = ({ producto, setMostrarTabla, setEjecutarConsulta }) => {
+    const [edit, setEdit] = useState(false);
+    const [infoEditada, setInfoEditada] = useState({
+        data: {
+            idProduct: producto.idProduct, producto: producto.producto, descripcion: producto.descripcion,
+            valorUnitario: producto.valorUnitario, estado: producto.estado
+        }
+    });
 
-//     const form = useRef(null);
+    const form = useRef(null);
 
-//     const submitForm = async (e) => {
-//         e.preventDefault();
-//         const fd = new FormData(form.current);
-//         const nuevoProducto = {};
-//         fd.forEach((value, key) => {
-//             nuevoProducto[key] = value;
-//         });
+    const submitForm = async (e) => {
+        e.preventDefault();
+        const fd = new FormData(form.current);
+        const nuevoProducto = {};
+        fd.forEach((value, key) => {
+            nuevoProducto[key] = value;
+        });
 
-
-
-//         return (
-//             <div className="fondo">
-//                 <section className="form-registro">
-//                     <form ref={form} onSubmit={submitForm}>
-//                         <h4>Editar producto</h4>
-//                         <input className="controls" type="number" name="idProduct" placeholder="Identificador unico" max="9999" required defaultValue={producto.idProduct} />
-//                         <input className="controls" type="text" name="producto" placeholder="Nombre del Producto" required defaultValue={producto.producto} />
-//                         <input className="controls descripcion" type="text" name="descripcion" placeholder="Añadir una descripcion del producto" required defaultValue={producto.descripcion} />
-//                         <input className="controls " type="number" name="valorUnitario" placeholder="Valor Unitario" required defaultValue={producto.valorUnitario} />
-//                         <select className="controls mouse" name="estado" defaultValue={0} required defaultValue={producto.estado}>
-//                             <option disabled value={0}>Estado del Producto</option>
-//                             <option >Disponible</option>
-//                             <option >No Disponible</option>
-//                         </select>
-//                         {/* Botón provisional luego agregar el alert*/}
-//                         <button className="botonRegistro" type="submit">
-//                             Enviar dos
-//                         </button>
-//                         {/* <input className="botonRegistro" type="submit" onClick={() => alert("El producto se ha añadido correctamente")} defaultValue="Enviar" /> */}
-//                     </form>
+        const options = {
+            method: 'PATCH',
+            url: 'http://localhost:5000/productos/' + producto._id + '/',
+            headers: { 'Content-Type': 'application/json' },
+            data: { ...infoEditada, id: producto._id },
+        };
 
 
-//                 </section>
-//             </div>
-//         );
-//     }
+        await axios
+            .request(options)
+            .then(function (response) {
+                console.log(response.data);
+                alert("El producto se ha actualizado correctamente");
+                setEdit(false);
+                setEjecutarConsulta(true);
+            })
+            .catch(function (error) {
+                alert("Hubo un error al actualizar el producto");
+                console.error(error);
+            });
 
-// }
 
+        setMostrarTabla(true)
+
+    };
+
+
+    return (
+        <div className="fondo">
+            <section className="form-registro">
+                <form ref={form} onSubmit={submitForm}>
+                    <h4>Editar producto</h4>
+                    <input className="controls" type="number" name="idProduct" placeholder="Identificador unico" max="9999" required value={infoEditada.idProduct}
+                        onChange={(e) =>
+                            setInfoEditada({ ...infoEditada, idProduct: e.target.value })
+                        }
+                    />
+                    <input className="controls" type="text" name="producto" placeholder="Nombre del Producto" required value={infoEditada.producto}
+                        onChange={(e) =>
+                            setInfoEditada({ ...infoEditada, producto: e.target.value })
+                        } />
+                    <input className="controls descripcion" type="text" name="descripcion" placeholder="Añadir una descripcion del producto" required value={infoEditada.descripcion}
+                        onChange={(e) =>
+                            setInfoEditada({ ...infoEditada, descripcion: e.target.value })
+                        }
+                    />
+                    <input className="controls " type="number" name="valorUnitario" placeholder="Valor Unitario" required value={infoEditada.valorUnitario}
+                        onChange={(e) =>
+                            setInfoEditada({ ...infoEditada, valorUnitario: e.target.value })
+                        } />
+                    <select className="controls mouse" name="estado" defaultValue={0} required defaultValue={producto.estado}
+                        onChange={(e) =>
+                            setInfoEditada({ ...infoEditada, estado: e.target.value })
+                        }
+                    >
+                        <option disabled value={0}>Estado del Producto</option>
+                        <option >Disponible</option>
+                        <option >No Disponible</option>
+                    </select>
+                    {/* Botón provisional luego agregar el alert*/}
+                    <button className="botonRegistro" type="submit">
+                        Enviar
+                    </button>
+                    {/* <input className="botonRegistro" type="submit" onClick={() => alert("El producto se ha añadido correctamente")} defaultValue="Enviar" /> */}
+                </form>
+
+
+            </section>
+        </div>
+    );
+}
 
 
 

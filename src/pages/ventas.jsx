@@ -282,8 +282,13 @@ const IngresarPage = ({ setMostrarTabla, listaVentas, setAgregarVenta }) => {
             <section className="form-registro ">
                 <form ref={form} onSubmit={submitForm}>
                     <h4>Registro de Venta</h4>
-                    <input className="controls" type="number" name="idVenta" max={9999} placeholder="Identificador unico producto" required />
+                    {/* <label htmlFor="idVenta" className="labelForm">Identificador único de la venta</label> */}
+                    <input className="controls" type="number" name="idVenta" max={9999} placeholder="Identificador unico de venta" required />
+                   
+                    {/* <label htmlFor="valorTotal" className="labelForm">Valor total de la venta</label> */}
                     <input className="controls" type="number" name="valorTotal" placeholder="Valor Total Venta" required />
+                   
+                    {/* <label htmlFor="producto" className="labelForm">Producto</label> */}
                     <select className="controls mouse" name="producto" required defaultValue={0}>
                         <option disabled value={0}>Seleccione Producto</option>
                         <option>Computador Todo en uno</option>
@@ -295,11 +300,23 @@ const IngresarPage = ({ setMostrarTabla, listaVentas, setAgregarVenta }) => {
                         <option >Usb</option>
                         <option >Parlantes</option>
                     </select>
+                   
+                    {/* <label htmlFor="cantidad" className="labelForm">Cantidad</label> */}
                     <input className="controls" type="number" name="cantidad" placeholder="Cantidad" required />
+                   
+                    {/* <label htmlFor="precioUnitarioProduct" className="labelForm">Precio unitario</label> */}
                     <input className="controls" type="number" name="precioUnitarioProduct" placeholder='Precio unitario' required />
+                    
+                    {/* <label htmlFor="fechaVenta" className="labelForm">Fecha de la venta</label> */}
                     <input className="controls" type="date" name="fechaVenta" required />
+                    
+                    {/* <label htmlFor="nombreCliente" className="labelForm">Nombre del cliente: </label> */}
                     <input className="controls" type="text" name="nombreCliente" placeholder='Nombre del cliente' required />
+                    
+                    {/* <label htmlFor="docIdentidadCliente" className="labelForm">Documento de identificación del cliente</label> */}
                     <input className="controls " type="number" name="docIdentidadCliente" placeholder='Doc. Identificación' required />
+                    
+                    {/* <label htmlFor="vendedor" className="labelForm">Nombre del vendedor</label> */}
                     <input className="controls" type="text" name="vendedor" placeholder='Nombre del vendedor' required />
             
                     <button className="botonRegistro" type="submit">

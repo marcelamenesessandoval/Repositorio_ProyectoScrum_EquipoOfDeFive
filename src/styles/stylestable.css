@@ -46,25 +46,10 @@
   .searchInTable{
     justify-self: center; 
     align-items:center;
-    text-align: center;
-    justify-content: left;
-    display: flex;
     margin-top: 20px;
     margin-bottom: 20px;
-    float: right;
-
+    float: left;
   }
-
-  .searchInTableUser{
-    width: 100%;
-    justify-self: center; 
-    align-items:center;
-    text-align: center;
-    justify-content: left;
-    display: flex;
-    margin-top: 3%;
-    /*float: right;*/
-}
 
 
   .buttonCreate{

@@ -36,6 +36,13 @@
     color: white;
     
   }
+
+
+  .labelForm{
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+  }
   
   .descripcion{
     padding-bottom: 40px;
