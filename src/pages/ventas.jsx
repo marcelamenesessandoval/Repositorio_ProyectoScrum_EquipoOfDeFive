@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Dialog from '@mui/material/Dialog';
@@ -51,6 +52,7 @@ const VentasPage = () => {
     }, [])
 
     return (
+<<<<<<< HEAD
         <div className="styleContentSection">
             <h2 className="tableTitle">Gestión de ventas</h2>
             <p className="textTable">A continuación, se enseña el listado de ventas registradas. Para registrar un nuevo producto, pulse el botón <b>Registrar venta.</b></p>
@@ -69,6 +71,44 @@ const VentasPage = () => {
                 <div className="numPag">
                     <i className="fas fa-chevron-right"></i>
                 </div>
+=======
+        <div className='backgroundTables'>
+            <section className="styleContentSection">
+
+                <h2 className="tableTitle">Gestión de ventas</h2>
+                <p className="textTable">A continuación, se enseña el listado de ventas registradas. Para modificar la información de ventas, pulse sobre el ícono editar.</p>
+                <br />
+                <p className="textTable">Para registrar un nuevo producto, pulse el botón <b>Registrar venta.</b></p>
+
+                <section className="styleOptionsTable">
+                    <Link to='/ventas/ingresarVenta'>
+                        <button className="buttonCreate">Registrar venta</button>
+                    </Link>
+
+                    <div className="searchInTable">
+                        <label className="labelSearch" htmlFor="buscar">Buscar: </label>
+                        <input className="inputSearch" type="text" />
+                    </div>
+                
+                </section>
+
+                <TablaVentas listaVentas={ventas} />
+
+                <section className="pager">
+                    <div className="numPag">
+                        <i className="fas fa-chevron-left"></i>
+                    </div>
+                    <div className="numPag">1</div>
+                    <div className="numPag">2</div>
+                    <div className="numPag">3</div>
+                    <div className="numPag">4</div>
+                    <div className="numPag">5</div>
+                    <div className="numPag">
+                        <i className="fas fa-chevron-right"></i>
+                    </div>
+
+                </section>
+>>>>>>> origin/main
 
             </section>
         </div>

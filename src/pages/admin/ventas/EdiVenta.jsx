@@ -1,3 +1,5 @@
+
+import { Tooltip } from '@material-ui/core';
 import React from 'react'
 
 const EdiVenta = () => {
@@ -33,7 +35,9 @@ const EdiVenta = () => {
                     <option >Carmen Tapia</option>
                 </select>
                 <input className="controls " type="number" name="Documento identificación" defaultValue= '1032444437' required />
+                <Tooltip title="Confirmar edición" arrow placement= "top">
                 <input className="botonRegistro" type="submit" onClick={()=>alert("La venta se ha añadido correctamente")} defaultValue="Añadir Venta" />
+                </Tooltip>
                 
             </form>
         </section>
