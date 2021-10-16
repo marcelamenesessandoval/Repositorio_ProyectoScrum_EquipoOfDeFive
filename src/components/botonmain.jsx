@@ -1,19 +1,18 @@
 
-import {Link} from 'react-router-dom'
+import { useAuth0 } from "@auth0/auth0-react";
 import React from 'react'
-  
-  const BotonMain = ({Tipo}) => {
-    return (
+
+
+const BotonMain = ({ Tipo }) => {
+  const { loginWithRedirect } = useAuth0();
+  return (
     <>
-      <Link to='/registro'>
-        <button type= "button"><span></span>Registrate</button>
-      </Link>
-      <Link to='/login'>
-        <button type= "button"><span></span>Login</button>
-      </Link>
+        <button onClick={() => loginWithRedirect()}><span></span>Ingresar</button>
+      
     </>
-  
-    )
-  };
-  
-  export default BotonMain;
+
+  )
+};
+
+
+export default BotonMain;
