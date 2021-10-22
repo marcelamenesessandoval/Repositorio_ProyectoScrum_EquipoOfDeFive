@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Dialog from '@mui/material/Dialog';
 import { nanoid } from 'nanoid';
 import axios from "axios";
-
+import { obtenerProductos } from 'utils/api';
 
 const VentasPage = () => {
     const [ventas, setVentas] = useState([]);
@@ -191,14 +191,14 @@ const FilaVenta = ({ setMostrarTabla, venta, setEjecutarConsulta }) => {
 
         <tr className="row">
             <td className="cell">{venta.idVenta}</td>
-            <td className="cell">{venta.producto}</td>
+            <td className="cell">producto</td>
             <td className="cell">{venta.nombreCliente}</td>
             <td className="cell">{venta.docIdentidadCliente}</td>
             <td className="cell">{venta.fechaVenta}</td>
             <td className="cell">
-                <i className="far fa-eye detailIcon tooltip">
+                {/* <i className="far fa-eye detailIcon tooltip">
                     <span className="tooltipText">Detalles</span>
-                </i>
+                </i> */}
 
                 <i className="far fa-edit editIcon tooltip"
                     onClick={() => setEdit(!edit)}>
@@ -237,7 +237,23 @@ const FilaVenta = ({ setMostrarTabla, venta, setEjecutarConsulta }) => {
 
 const IngresarPage = ({ setMostrarTabla, listaVentas, setAgregarVenta }) => {
 
+    const [productosSeleccionados, setProductosSeleccionados] = useState([]);
+
     const form = useRef(null);
+    const [productos, setProductos] = useState([]);
+
+    useEffect(() => {
+        obtenerProductos(
+            (response) => {
+                setProductos(response.data);
+            },
+            (error) => {
+                console.error(error);
+            }
+        );
+    }, []);
+
+
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -247,17 +263,27 @@ const IngresarPage = ({ setMostrarTabla, listaVentas, setAgregarVenta }) => {
             nuevaVenta[key] = value;
         });
 
+        console.log("nueva venta", nuevaVenta)
+
+        const informacionConsolidada = {
+            idVenta: nuevaVenta.idVenta, valorTotal: nuevaVenta.valorTotal, 
+            producto: productos.filter((el) => el._id=== nuevaVenta.producto)[0],
+            cantidad: nuevaVenta.cantidad, precioUnitarioProduct: nuevaVenta.precioUnitarioProduct, fechaVenta: nuevaVenta.fechaVenta,
+            nombreCliente: nuevaVenta.nombreCliente, vendedor: nuevaVenta.vendedor, docIdentidadCliente: nuevaVenta.docIdentidadCliente
+        
+        }
+
+
+
 
         const options = {
             method: 'POST',
             url: 'http://localhost:5000/ventas',
             headers: { 'Content-Type': 'application/json' },
-            data: {
-                idVenta: nuevaVenta.idVenta, valorTotal: nuevaVenta.valorTotal, producto: nuevaVenta.producto,
-                cantidad: nuevaVenta.cantidad, precioUnitarioProduct: nuevaVenta.precioUnitarioProduct, fechaVenta: nuevaVenta.fechaVenta,
-                nombreCliente: nuevaVenta.nombreCliente, vendedor: nuevaVenta.vendedor, docIdentidadCliente: nuevaVenta.docIdentidadCliente
-            }
+            data: informacionConsolidada,
         };
+
+        console.log("Información consolidada de la venta",  informacionConsolidada)
 
 
         await axios
@@ -276,56 +302,229 @@ const IngresarPage = ({ setMostrarTabla, listaVentas, setAgregarVenta }) => {
 
     };
 
+
+    useEffect(() => {
+        console.log("estos son los productos", productos)
+    }, [productos]);
+
+    useEffect(() => {
+        console.log("Productos seleccionados", productosSeleccionados)
+    }, [productosSeleccionados])
+
+
+    const agregarNuevoProducto = () => {
+        setProductosSeleccionados([...productosSeleccionados, DropDownProductos])
+    };
+
+
     return (
         <div className='fondo'>
             <section className="form-registro ">
                 <form ref={form} onSubmit={submitForm}>
                     <h4>Registro de Venta</h4>
-                    {/* <label htmlFor="idVenta" className="labelForm">Identificador único de la venta</label> */}
+                    <label htmlFor="idVenta" className="labelForm">Identificador único de la venta</label>
                     <input className="controls" type="number" name="idVenta" max={9999} placeholder="Identificador unico de venta" required />
                    
-                    {/* <label htmlFor="valorTotal" className="labelForm">Valor total de la venta</label> */}
-                    <input className="controls" type="number" name="valorTotal" placeholder="Valor Total Venta" required />
-                   
-                    {/* <label htmlFor="producto" className="labelForm">Producto</label> */}
-                    <select className="controls mouse" name="producto" required defaultValue={0}>
-                        <option disabled value={0}>Seleccione Producto</option>
-                        <option>Computador Todo en uno</option>
-                        <option >Laptop</option>
-                        <option >Teclado</option>
-                        <option >Mouse</option>
-                        <option >Disco Duro</option>
-                        <option >Diadema</option>
-                        <option >Usb</option>
-                        <option >Parlantes</option>
-                    </select>
-                   
-                    {/* <label htmlFor="cantidad" className="labelForm">Cantidad</label> */}
-                    <input className="controls" type="number" name="cantidad" placeholder="Cantidad" required />
-                   
-                    {/* <label htmlFor="precioUnitarioProduct" className="labelForm">Precio unitario</label> */}
-                    <input className="controls" type="number" name="precioUnitarioProduct" placeholder='Precio unitario' required />
-                    
-                    {/* <label htmlFor="fechaVenta" className="labelForm">Fecha de la venta</label> */}
+                    <label htmlFor="fechaVenta" className="labelForm">Fecha de la venta</label>
                     <input className="controls" type="date" name="fechaVenta" required />
-                    
-                    {/* <label htmlFor="nombreCliente" className="labelForm">Nombre del cliente: </label> */}
+
+                    <label htmlFor="nombreCliente" className="labelForm">Nombre del cliente: </label>
                     <input className="controls" type="text" name="nombreCliente" placeholder='Nombre del cliente' required />
-                    
-                    {/* <label htmlFor="docIdentidadCliente" className="labelForm">Documento de identificación del cliente</label> */}
+
+                    <label htmlFor="docIdentidadCliente" className="labelForm">Documento de identificación del cliente</label>
                     <input className="controls " type="number" name="docIdentidadCliente" placeholder='Doc. Identificación' required />
-                    
-                    {/* <label htmlFor="vendedor" className="labelForm">Nombre del vendedor</label> */}
+
+                    <label htmlFor="vendedor" className="labelForm">Nombre del vendedor</label>
                     <input className="controls" type="text" name="vendedor" placeholder='Nombre del vendedor' required />
-            
+
+
+                    <div className="divAdd">
+                        <button type="button" onClick={() => agregarNuevoProducto()} className="buttonAdd">
+                            +   Agregar producto
+                        </button>
+                    </div>
+
+                    {productosSeleccionados.map((P) => {
+                        return <P key={nanoid()} productos={productos} />;
+                    })}
+
+                    <label htmlFor="valorTotal" className="labelForm">Valor total de la venta</label>
+                    <input className="controls" type="number" name="valorTotal" placeholder="Valor Total Venta" required />
+
+
+
                     <button className="botonRegistro" type="submit">
-                        Enviar 
+                        Enviar
                     </button>
                 </form>
             </section>
         </div>
     );
 }
+
+
+const DropDownProductos = ({ productos, nombre }) => {
+    return (
+        <div className="divAgregarProducto">
+            <label htmlFor="producto" className="labelForm">Producto</label>
+            <select className="controls mouse" name="producto" required defaultValue=''>
+                <option disabled value=''>Seleccione Producto</option>
+                {productos.map((p) => {
+                    return <option key={nanoid()} value={p._id}>{p.producto}</option>;
+                })}
+            </select>
+
+            <label htmlFor="cantidad" className="labelForm">Cantidad</label>
+            <input className="controls" type="number" name="cantidad" placeholder="Cantidad" required />
+
+            <label htmlFor="precioUnitarioProduct" className="labelForm">Precio unitario</label>
+            <input className="controls" type="number" name="precioUnitarioProduct" placeholder='Precio unitario' required />
+        </div>
+    )
+};
+
+
+
+
+
+const EditarVenta = ({ venta, setMostrarTabla, setEjecutarConsulta }) => {
+    const [edit, setEdit] = useState(false);
+    const [productosSeleccionados, setProductosSeleccionados] = useState([]);
+    const [infoEditada, setInfoEditada] = useState({
+        idVenta: venta.idVenta, valorTotal: venta.valorTotal, 
+        producto: productos.filter((el) => el._id=== venta.producto)[0],
+        cantidad: venta.cantidad, precioUnitarioProduct: venta.precioUnitarioProduct, fechaVenta: venta.fechaVenta,
+        nombreCliente: venta.nombreCliente, vendedor: venta.vendedor, docIdentidadCliente: venta.docIdentidadCliente
+    }
+    );
+    const [productos, setProductos] = useState([]);
+
+
+
+    useEffect(() => {
+        obtenerProductos(
+            (response) => {
+                setProductos(response.data);
+            },
+            (error) => {
+                console.error(error);
+            }
+        );
+    }, []);
+
+    const form = useRef(null);
+
+    const submitForm = async (e) => {
+        e.preventDefault();
+        const fd = new FormData(form.current);
+        const nuevaVenta = {};
+        fd.forEach((value, key) => {
+            nuevaVenta[key] = value;
+        });
+
+        const options = {
+            method: 'PATCH',
+            url: 'http://localhost:5000/ventas/' + venta._id + '/',
+            headers: { 'Content-Type': 'application/json' },
+            data: { ...infoEditada },
+        };
+
+
+        await axios
+            .request(options)
+            .then(function (response) {
+                console.log(response.data);
+                alert("La venta se ha actualizado correctamente");
+                setEdit(false);
+                setEjecutarConsulta(true);
+            })
+            .catch(function (error) {
+                alert("Hubo un error al actualizar la venta");
+                console.error(error);
+            });
+
+
+        setMostrarTabla(true)
+
+    };
+
+
+    useEffect(() => {
+        console.log("Productos seleccionados", productosSeleccionados)
+    }, [productosSeleccionados])
+
+
+    const agregarNuevoProducto = () => {
+        setProductosSeleccionados([...productosSeleccionados, DropDownProductos])
+    };
+
+
+    return (
+        <div className="fondo">
+            <section className="form-registro">
+
+                <form ref={form} onSubmit={submitForm}>
+                <h4>Editar Venta</h4>
+                    <label htmlFor="idVenta" className="labelForm">Identificador único de la venta</label>
+                    <input className="controls" type="number" name="idVenta" max={9999} placeholder="Identificador unico de venta" required value={infoEditada.idVenta}
+                        onChange={(e) =>
+                            setInfoEditada({ ...infoEditada, idVenta: e.target.value })
+                        } />
+                   
+                    <label htmlFor="fechaVenta" className="labelForm">Fecha de la venta</label>
+                    <input className="controls" type="date" name="fechaVenta" required value={infoEditada.fechaVenta}
+                        onChange={(e) =>
+                            setInfoEditada({ ...infoEditada, fechaVenta: e.target.value })
+                        }  />
+
+                    <label htmlFor="nombreCliente" className="labelForm">Nombre del cliente: </label>
+                    <input className="controls" type="text" name="nombreCliente" placeholder='Nombre del cliente' required value={infoEditada.nombreCliente}
+                        onChange={(e) =>
+                            setInfoEditada({ ...infoEditada, nombreCliente: e.target.value })
+                        }  />
+
+                    <label htmlFor="docIdentidadCliente" className="labelForm">Documento de identificación del cliente</label>
+                    <input className="controls " type="number" name="docIdentidadCliente" placeholder='Doc. Identificación' required value={infoEditada.docIdentidadCliente}
+                        onChange={(e) =>
+                            setInfoEditada({ ...infoEditada, docIdentidadCliente: e.target.value })
+                        } />
+
+                    <label htmlFor="vendedor" className="labelForm">Nombre del vendedor</label>
+                    <input className="controls" type="text" name="vendedor" placeholder='Nombre del vendedor' required value={infoEditada.vendedor}
+                        onChange={(e) =>
+                            setInfoEditada({ ...infoEditada, vendedor: e.target.value })
+                        } />
+
+
+                    <div className="divAdd">
+                        <button onClick={() => agregarNuevoProducto()} className="buttonAdd">
+                            +   Agregar producto
+                        </button>
+                    </div> 
+
+                     {productosSeleccionados.map((P) => {
+                        return <P key={nanoid()} productos={productos} />;
+                    })}
+
+                    <label htmlFor="valorTotal" className="labelForm">Valor total de la venta</label>
+                    <input className="controls" type="number" name="valorTotal" placeholder="Valor Total Venta" required value={infoEditada.valorTotal}
+                        onChange={(e) =>
+                            setInfoEditada({ ...infoEditada, valorTotal: e.target.value })
+                        }/>
+
+
+
+                    <button className="botonRegistro" type="submit">
+                        Enviar
+                    </button>
+
+                </form>
+
+            </section>
+        </div>
+    );
+}
+
 
 
 

@@ -176,9 +176,9 @@ const FilaUsuario = ({ setMostrarTabla, usuario, setEjecutarConsulta }) => {
             <td className="cell">{usuario.rol}</td>
             <td className="cell">{usuario.estadoUsuario}</td>
             <td className="cell">
-                <i className="far fa-eye detailIcon tooltip">
+                {/* <i className="far fa-eye detailIcon tooltip">
                     <span className="tooltipText">Detalles</span>
-                </i>
+                </i> */}
 
                 <i className="far fa-edit editIcon tooltip"
                     onClick={() => setEdit(!edit)}>
@@ -215,51 +215,78 @@ const FilaUsuario = ({ setMostrarTabla, usuario, setEjecutarConsulta }) => {
 };
 
 
+//ESTA ES LA SECCIÓN DE LA EDICIÓN AÚN NO ES SEGURO SI FUNCIONA CORRECTAMENTE, ADEMÁS FALTA DEFINIR QUÉ CAMPOS SE TRAEN DE LOGGIN
+
+// const EditarUsuario = ({ usuario, setMostrarTabla, setEjecutarConsulta }) => {
+//     const [edit, setEdit] = useState(false);
+//      const [infoEditada, setInfoEditada] = useState({
+        
+//     // FALTA INDICAR QUÉ DATOS SE VAN A EDITAR
+
+//      );
+
+
+//     const form = useRef(null);
+
+//     const submitForm = async (e) => {
+//         e.preventDefault();
+//         const fd = new FormData(form.current);
+//         const nuevoUsuario = {};
+//         fd.forEach((value, key) => {
+//             nuevoUsuario[key] = value;
+//         });
+
+//         const options = {
+//             method: 'PATCH',
+//             url: 'http://localhost:5000/usuarios/' + usuario._id + '/',
+//             headers: { 'Content-Type': 'application/json' },
+//             data: { ...infoEditada },
+//         };
+
+
+//         await axios
+//             .request(options)
+//             .then(function (response) {
+//                 console.log(response.data);
+//                 alert("El usuario se ha actualizado correctamente");
+//                 setEdit(false);
+//                 setEjecutarConsulta(true);
+//             })
+//             .catch(function (error) {
+//                 alert("Hubo un error al actualizar el usuario");
+//                 console.error(error);
+//             });
+
+
+//         setMostrarTabla(true)
+
+//     };
+
+
+//     return (
+//         <div className="fondo">
+//             <section className="form-registro">
+
+//                 <form ref={form} onSubmit={submitForm}>
+//                     <h4>Editar usuario</h4>
+
+//                 //FALTA INDICAR QUÉ CAMPOS SE VAN A EDITAR PUES ALGUNOS SUPONGO QUE SE TRAEN DEL AUTH0 
+
+//                     <button className="botonRegistro" type="submit">
+//                         Enviar
+//                     </button>
+//                 </form>
+
+//             </section>
+//         </div>
+//     );
+// }
+
+
+
+
 
 export default UsuariosPage;
 
 
-
-
-// <tbody>
-// {usuariosFiltrados.map((usuario) => {
-//     return (
-//         <tr key={nanoid} className="row">
-//             <td className="cell">{usuario.id}</td>
-//             <td className="cell">{usuario.nombre}</td>
-//             <td className="cell">{usuario.rol}</td>
-//             <td className="cell">{usuario.estado}</td>
-//             <td className="cell">
-//                 <i className="far fa-eye detailIcon tooltip">
-//                     <span className="tooltipText">Detalles</span>
-//                 </i>
-//                 <Link to='/admin/usuarios/editarUsuario'>
-//                     <i className="far fa-edit editIcon tooltip">
-//                         <span className="tooltipText">Editar</span>
-//                     </i>
-//                 </Link>
-
-//                 <i class="fas fa-trash-alt deleteIcon tooltip"
-//                     onClick={() => setOpenDialog(true)}>
-//                     <span className="tooltipText">Eliminar</span>
-//                 </i>
-
-//                 <Dialog fullWidth maxWidth="sm" className="dialog" open={openDialog}>
-//                     <h3 className="titleDialog">Confirmar eliminación</h3>
-//                     <div>
-//                         <p className="textDelete">¿Está seguro de eliminar el usuario?</p>
-//                     </div>
-//                     <div className="divButtonDialog">
-//                         <button className="buttonDialogDelete">Sí, eliminar</button>
-//                         <button
-//                             onClick={() => setOpenDialog(false)}
-//                             className="buttonDialogDelete">Cancelar</button>
-//                     </div>
-//                 </Dialog>
-
-//             </td>
-//         </tr>
-//     );
-// })}
-// </tbody>
 
