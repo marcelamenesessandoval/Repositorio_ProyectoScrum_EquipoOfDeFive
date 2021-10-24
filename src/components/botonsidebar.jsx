@@ -4,11 +4,9 @@ import Botonlogout from "./botonlogout";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const BotonSidebar = () => {
-  const { isAuthenticated} = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   console.log(isAuthenticated);
-
-  
 
   return (
     <div>
@@ -27,9 +25,9 @@ const BotonSidebar = () => {
           <span></span>Gestionar usuarios
         </button>
       </Link>
-    
-      <Botonlogout />
-    
+      <Link to="https://evening-wildwood-64160.herokuapp.com">
+        <Botonlogout />
+      </Link>
     </div>
   );
 };
