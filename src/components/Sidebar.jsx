@@ -2,7 +2,6 @@ import React from 'react';
 import LogoSidebar from 'components/logosidebar';
 import logo from 'media/logo.png';
 import BotonSidebar from './botonsidebar';
-// import pexels4 from '../media/pexels4.jpg'
 
 const Sidebar = () => {
 

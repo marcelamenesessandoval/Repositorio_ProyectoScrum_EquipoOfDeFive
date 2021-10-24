@@ -95,7 +95,7 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
 
             })
         );
-        console.log("Revisión productos fitrados", productosFiltrados)
+        console.log("Revisión productos fitrados")
     }, [busqueda, listaProductos]);
 
 
