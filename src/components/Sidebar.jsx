@@ -9,7 +9,6 @@ const Sidebar = () => {
         width: '300px',
         height: '100vh',
         background: '#000000a9',
-        // backgroundImage: 'URL(pexels4.jpg)',
     };
 
     return <nav style={SidebarStyle}>
