@@ -29,8 +29,7 @@ function App() {
     <Auth0Provider
       domain="misiontic-equipo-of-de-five.us.auth0.com"
       clientId="6g2j9VBu7LSi57EG1ugKpa5xCvXKVRMK"
-      //redirectUri={"https://evening-wildwood-64160.herokuapp.com/admin"}
-      redirectUri={window.location.origin}
+      redirectUri={"https://evening-wildwood-64160.herokuapp.com/admin"}
     >
       <div className="App">
         <Router>
