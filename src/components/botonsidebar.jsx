@@ -25,7 +25,7 @@ const BotonSidebar = () => {
           <span></span>Gestionar usuarios
         </button>
       </Link>
-      <Link to="https://evening-wildwood-64160.herokuapp.com">
+      <Link to="/">
         <Botonlogout />
       </Link>
     </div>
