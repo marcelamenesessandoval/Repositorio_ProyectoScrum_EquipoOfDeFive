@@ -6,7 +6,7 @@ const Botonlogout = () => {
 
   return (
     <button onClick={() => logout()} type="button">
-      <span></span> <label>Cerrar Sesión</label>
+      <span></span> <label>Cerrar Sesion</label>
     </button>
   );
 };
