@@ -12,7 +12,7 @@ const ProductosPage = () => {
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
 
   const obtenerProductos = async () => {
-    const options = { method: "GET", url: "https://evening-wildwood-64160.herokuapp.com/productos" };
+    const options = { method: "GET", url: "https://evening-wildwood-64160.herokuapp.com/productos/" };
     await axios
       .request(options)
       .then(function (response) {

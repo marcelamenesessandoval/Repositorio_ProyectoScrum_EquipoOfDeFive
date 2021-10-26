@@ -11,7 +11,7 @@ const VentasPage = () => {
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
 
   const obtenerVentas = async () => {
-    const options = { method: "GET", url: "https://sleepy-peak-71602.herokuapp.com/ventas" };
+    const options = { method: "GET", url: "https://sleepy-peak-71602.herokuapp.com/ventas/" };
     await axios
       .request(options)
       .then(function (response) {

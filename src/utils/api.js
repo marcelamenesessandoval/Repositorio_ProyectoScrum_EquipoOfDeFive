@@ -2,7 +2,7 @@
 import axios from "axios";
 
 export const obtenerProductos = async (succesCallback, errorCallback) => {
-    const options = { method: 'GET', url: 'https://sleepy-peak-71602.herokuapp.com/productos' };
+    const options = { method: 'GET', url: 'https://sleepy-peak-71602.herokuapp.com/productos/' };
     await axios
         .request(options)
         .then(succesCallback)

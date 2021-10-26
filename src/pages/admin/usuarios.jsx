@@ -14,7 +14,7 @@ const UsuariosPage = () => {
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
 
   const obtenerUsuarios = async () => {
-    const options = { method: "GET", url: "https://sleepy-peak-71602.herokuapp.com/usuarios" };
+    const options = { method: "GET", url: "https://sleepy-peak-71602.herokuapp.com/usuarios/" };
     await axios
       .request(options)
       .then(function (response) {
