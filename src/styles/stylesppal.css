@@ -82,7 +82,7 @@ button{
   width: 200px;
   padding: 15px 0;
   text-align: center;
-  margin: 20px 10px;
+  margin: 30px 25px;
   border-radius: 25px;
   font-weight: bold;
   border: 2px solid #009688;
@@ -111,7 +111,17 @@ button:hover span{
 
 button:hover{
   border: none;
+
 }
+
+label{
+  color: whitesmoke;
+}
+
+label:hover{
+  color: red;
+}
+
 
 .banner_inf{
   width: 100%;
@@ -145,15 +155,6 @@ button:hover{
   margin-right: 25px;
   color: #009688; 
 }
-
-/* .admin div{
-  padding: 0%;
-  margin: 0%;
-  background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(styles/adminFondo.jpg) no-repeat center top;
-  background-size: cover;
-  background-position-x: center;
-} */
-
 
 
 

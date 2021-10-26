@@ -1,31 +1,35 @@
-import {Link} from 'react-router-dom'
-import React from 'react';
-
-  
-const BotonSB = {
-  width: '200px',
-  margin: '30px 25px',
-  textAlign: 'center',
-  background: '#009688',
-};
+import { Link } from "react-router-dom";
+import React from "react";
+import Botonlogout from "./botonlogout";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const BotonSidebar = () => {
+  const { isAuthenticated } = useAuth0();
+
+  console.log(isAuthenticated);
+
   return (
     <div>
-      <Link to='/ventas'>
-        <button type= "button" style={BotonSB}><span></span>Gestionar Ventas</button>
+      <Link to="/ventas">
+        <button type="button">
+          <span></span>Gestionar Ventas
+        </button>
       </Link>
-      <Link to='/admin/productos'>
-        <button type= "button" style={BotonSB}><span></span>Gestionar Productos</button>
+      <Link to="/admin/productos">
+        <button type="button">
+          <span></span>Gestionar Productos
+        </button>
       </Link>
-      <Link to='/admin/usuarios'>
-        <button type= "button" style={BotonSB}><span></span>Gestionar usuarios</button>
+      <Link to="/admin/usuarios">
+        <button type="button">
+          <span></span>Gestionar usuarios
+        </button>
       </Link>
-      <Link to='/'>
-        <button type= "button" style={BotonSB}><span></span>Salir</button>
+      <Link to="/">
+        <Botonlogout />
       </Link>
     </div>
-  )
+  );
 };
-  
-  export default BotonSidebar;
+
+export default BotonSidebar;
