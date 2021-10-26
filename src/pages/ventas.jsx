@@ -11,7 +11,7 @@ const VentasPage = () => {
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
 
   const obtenerVentas = async () => {
-    const options = { method: "GET", url: "https://afternoon-chamber-83835.herokuapp.com/ventas/" };
+    const options = { method: "GET", url: "https://radiant-peak-38996.herokuapp.com/ventas/" };
     await axios
       .request(options)
       .then(function (response) {
@@ -167,7 +167,7 @@ const FilaVenta = ({ setMostrarTabla, venta, setEjecutarConsulta }) => {
   const eliminarVenta = async () => {
     const options = {
       method: "DELETE",
-      url: "https://afternoon-chamber-83835.herokuapp.com/ventas/" + venta._id + "/",
+      url: "https://radiant-peak-38996.herokuapp.com/ventas/" + venta._id + "/",
       headers: { "Content-Type": "application/json" },
       data: { id: venta._id },
     };
@@ -225,7 +225,7 @@ const FilaVenta = ({ setMostrarTabla, venta, setEjecutarConsulta }) => {
 
     const options = {
       method: "PATCH",
-      url: "https://afternoon-chamber-83835.herokuapp.com/ventas/" + venta._id + "/",
+      url: "https://radiant-peak-38996.herokuapp.com/ventas/" + venta._id + "/",
       headers: { "Content-Type": "application/json" },
       data: { ...infoEditada },
     };
@@ -540,7 +540,7 @@ const IngresarPage = ({ setMostrarTabla, listaVentas, setAgregarVenta }) => {
 
     const options = {
       method: "POST",
-      url: "https://afternoon-chamber-83835.herokuapp.com/ventas",
+      url: "https://radiant-peak-38996.herokuapp.com/ventas",
       headers: { "Content-Type": "application/json" },
       data: informacionConsolidada,
     };
