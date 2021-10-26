@@ -1,10 +1,10 @@
 
-  .backgroundTables{
+  /* .backgroundTables{
     background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(./fondosoft.jpeg);
     width: inherit;
     background-size: cover;
     background-position-x: center;
-  }
+  } */
 
 
   .styleContentSection{
@@ -14,6 +14,7 @@
     justify-self: center;
     justify-items: center;
     margin: 3%;
+    margin-top: 1%;
     width:inherit;
     /*box-shadow: 7px 13px 37px #000;
     opacity: 90%;
@@ -25,6 +26,7 @@
   .tableTitle{
     text-align: center;
     margin: 20px;
+    margin-top: 40px;
     margin-bottom: 40px;
     font-family: sans-serif;
     color: white;
@@ -46,29 +48,15 @@
   .searchInTable{
     justify-self: center; 
     align-items:center;
-    text-align: center;
-    justify-content: left;
-    display: flex;
     margin-top: 20px;
     margin-bottom: 20px;
-    float: right;
-
+    float: left;
   }
-
-  .searchInTableUser{
-    width: 100%;
-    justify-self: center; 
-    align-items:center;
-    text-align: center;
-    justify-content: left;
-    display: flex;
-    margin-top: 3%;
-    /*float: right;*/
-}
 
 
   .buttonCreate{
     height: 40px;
+    width: 16%;
     align-self: center;
     color: white;
     background-color: rgb(70, 165, 186);
@@ -347,6 +335,21 @@
   text-align: center;
   padding: 10%;
 }
+
+.dialogEdit{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 7px;
+  padding: 0;
+  height: 110%;
+  overflow-x:none;
+  overflow-y: scroll;
+  /* scrollbar-color:#009688; */
+}
+
+
+
 
 .divButtonDialog{
   justify-content: center;

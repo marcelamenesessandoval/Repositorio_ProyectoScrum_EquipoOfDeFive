@@ -40,4 +40,7 @@ export const RegVenta = () => {
         </div>
     );
 }
+
+
+
 export default RegVenta;
