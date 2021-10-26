@@ -24,7 +24,7 @@ const EditarProducto = ({ producto, setMostrarTabla, setEjecutarConsulta }) => {
 
         const options = {
             method: 'PATCH',
-            url: 'http://localhost:5000/productos/' + producto._id + '/',
+            url: 'https://sleepy-peak-71602.herokuapp.com/productos/' + producto._id + '/',
             headers: { 'Content-Type': 'application/json' },
             data: { ...infoEditada },
         };
