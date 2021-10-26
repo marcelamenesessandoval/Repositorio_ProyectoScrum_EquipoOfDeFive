@@ -2,7 +2,7 @@
 import axios from "axios";
 
 export const obtenerProductos = async (succesCallback, errorCallback) => {
-    const options = { method: 'GET', url: 'http://localhost:5000/productos' };
+    const options = { method: 'GET', url: 'https://evening-wildwood-64160.herokuapp.com/productos' };
     await axios
         .request(options)
         .then(succesCallback)
@@ -13,7 +13,7 @@ export const obtenerProductos = async (succesCallback, errorCallback) => {
 export const crearProducto = async (data, succesCallback, errorCallback) => {
     const options = {
         method: 'POST',
-        url: 'http://localhost:5000/productos',
+        url: 'https://evening-wildwood-64160.herokuapp.com/productos',
         headers: { 'Content-Type': 'application/json' },
         data,
     };
