@@ -336,6 +336,21 @@
   padding: 10%;
 }
 
+.dialogEdit{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 7px;
+  padding: 0;
+  height: 110%;
+  overflow-x:none;
+  overflow-y: scroll;
+  /* scrollbar-color:#009688; */
+}
+
+
+
+
 .divButtonDialog{
   justify-content: center;
   align-items: center;

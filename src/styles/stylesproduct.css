@@ -4,6 +4,19 @@
   background-size: cover
 } */
 
+.form-edit{
+  width: 540px ;
+  background: #24303c;
+  padding: 30px;
+  margin: 0;
+  margin-top: 0px;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  box-shadow: 7px 13px 37px #000;
+  opacity: 90%;
+
+}
 
   
   .form-registro{
