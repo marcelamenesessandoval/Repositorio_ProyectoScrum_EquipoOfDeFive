@@ -13,7 +13,7 @@ export const obtenerProductos = async (succesCallback, errorCallback) => {
 export const crearProducto = async (data, succesCallback, errorCallback) => {
     const options = {
         method: 'POST',
-        url: 'https://sleepy-peak-71602.herokuapp.com/productos',
+        url: 'https://afternoon-chamber-83835.herokuapp.com/productos',
         headers: { 'Content-Type': 'application/json' },
         data,
     };
