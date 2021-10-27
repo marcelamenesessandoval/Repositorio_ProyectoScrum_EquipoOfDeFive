@@ -415,7 +415,7 @@ const FilaVenta = ({ setMostrarTabla, venta, setEjecutarConsulta }) => {
                   className='controls mouse'
                   name='producto'
                   required
-                  value={infoEditada.producto.producto} //Agregado 25 oct 2021 8am
+                  value={infoEditada.producto} //Agregado 25 oct 2021 8am
                   onChange={(e) =>
                     setInfoEditada({ ...infoEditada, producto: e.target.value })
                   }
