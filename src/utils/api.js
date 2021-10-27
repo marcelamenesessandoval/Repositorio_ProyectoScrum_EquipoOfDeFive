@@ -2,7 +2,7 @@
 import axios from "axios";
 
 export const obtenerProductos = async (succesCallback, errorCallback) => {
-    const options = { method: 'GET', url: 'https://afternoon-chamber-83835.herokuapp.com/productos/' };
+    const options = { method: 'GET', url: 'https://radiant-peak-38996.herokuapp.com/productos/' };
     await axios
         .request(options)
         .then(succesCallback)
@@ -13,7 +13,7 @@ export const obtenerProductos = async (succesCallback, errorCallback) => {
 export const crearProducto = async (data, succesCallback, errorCallback) => {
     const options = {
         method: 'POST',
-        url: 'https://afternoon-chamber-83835.herokuapp.com/productos',
+        url: 'https://radiant-peak-38996.herokuapp.com/productos',
         headers: { 'Content-Type': 'application/json' },
         data,
     };
@@ -27,7 +27,7 @@ export const crearProducto = async (data, succesCallback, errorCallback) => {
 export const editarProducto = async (id, data, succesCallback, errorCallback) => {
     const options = {
         method: 'PATCH',
-        url: 'https://afternoon-chamber-83835.herokuapp.com/productos' + id + '/',
+        url: 'https://radiant-peak-38996.herokuapp.com/productos' + id + '/',
         headers: { 'Content-Type': 'application/json' },
         data,
     };
@@ -41,7 +41,7 @@ export const editarProducto = async (id, data, succesCallback, errorCallback) =>
 export const eliminarProducto = async (id, succesCallback, errorCallback) => {
     const options = {
         method: 'DELETE',
-        url: 'https://afternoon-chamber-83835.herokuapp.com/productos' + id + '/',
+        url: 'hhttps://radiant-peak-38996.herokuapp.com/productos' + id + '/',
         headers: { 'Content-Type': 'application/json' }
     };
     await axios

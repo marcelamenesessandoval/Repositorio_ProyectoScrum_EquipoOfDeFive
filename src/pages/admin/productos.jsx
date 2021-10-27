@@ -4,7 +4,6 @@ import { nanoid } from "nanoid";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const ProductosPage = () => {
   const [productos, setProductos] = useState([]);
   const [mostrarTabla, setMostrarTabla] = useState(true);
@@ -12,7 +11,10 @@ const ProductosPage = () => {
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
 
   const obtenerProductos = async () => {
-    const options = { method: "GET", url: "https://radiant-peak-38996.herokuapp.com/productos/" };
+    const options = {
+      method: "GET",
+      url: "https://radiant-peak-38996.herokuapp.com/productos/",
+    };
     await axios
       .request(options)
       .then(function (response) {
@@ -46,7 +48,7 @@ const ProductosPage = () => {
   }, [mostrarTabla]);
 
   return (
-    <div className='styleContentSection'>
+    <div className="styleContentSection">
       {mostrarTabla ? (
         <TablaProductos
           listaProductos={productos}
@@ -64,7 +66,7 @@ const ProductosPage = () => {
         onClick={() => {
           setMostrarTabla(!mostrarTabla);
         }}
-        className='buttonCreate'
+        className="buttonCreate"
       >
         {textoBoton}
       </button>
@@ -97,33 +99,33 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
 
   return (
     <>
-      <h2 className='tableTitle'>Gestión de productos</h2>
-      <p className='textTable'>
+      <h2 className="tableTitle">Gestión de productos</h2>
+      <p className="textTable">
         A continuación, se enseña el listado de productos registrados. Para
         registrar un nuevo producto, pulse el botón <b>Registrar producto.</b>
       </p>
 
-      <section className='styleOptionsTable'>
-        <div className='searchInTable'>
-          <label className='labelSearch' htmlFor='buscar'>
+      <section className="styleOptionsTable">
+        <div className="searchInTable">
+          <label className="labelSearch" htmlFor="buscar">
             Buscar:{" "}
           </label>
           <input
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
-            className='inputSearch'
-            type='text'
+            className="inputSearch"
+            type="text"
           />
         </div>
       </section>
 
-      <table className='table'>
+      <table className="table">
         <thead>
-          <tr className='fila'>
-            <th className='column narrowColumn'>ID</th>
-            <th className='column'>PRODUCTO</th>
-            <th className='column widthColumn'>DESCRIPCIÓN</th>
-            <th className='column iconColumn'>OPCIONES</th>
+          <tr className="fila">
+            <th className="column narrowColumn">ID</th>
+            <th className="column">PRODUCTO</th>
+            <th className="column widthColumn">DESCRIPCIÓN</th>
+            <th className="column iconColumn">OPCIONES</th>
           </tr>
         </thead>
 
@@ -140,17 +142,17 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
         </tbody>
       </table>
 
-      <section className='pager'>
-        <div className='numPag'>
-          <i className='fas fa-chevron-left'></i>
+      <section className="pager">
+        <div className="numPag">
+          <i className="fas fa-chevron-left"></i>
         </div>
-        <div className='numPag'>1</div>
-        <div className='numPag'>2</div>
-        <div className='numPag'>3</div>
-        <div className='numPag'>4</div>
-        <div className='numPag'>5</div>
-        <div className='numPag'>
-          <i className='fas fa-chevron-right'></i>
+        <div className="numPag">1</div>
+        <div className="numPag">2</div>
+        <div className="numPag">3</div>
+        <div className="numPag">4</div>
+        <div className="numPag">5</div>
+        <div className="numPag">
+          <i className="fas fa-chevron-right"></i>
         </div>
       </section>
     </>
@@ -158,7 +160,6 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
 };
 
 const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
-
   const [openDialog, setOpenDialog] = useState(false);
   const [openDialogEdit, setOpenDialogEdit] = useState(false);
 
@@ -167,7 +168,10 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
   const eliminarProducto = async () => {
     const options = {
       method: "DELETE",
-      url: "https://radiant-peak-38996.herokuapp.com/productos/" + producto._id + "/",
+      url:
+        "https://radiant-peak-38996.herokuapp.com/productos/" +
+        producto._id +
+        "/",
       headers: { "Content-Type": "application/json" },
       data: { id: producto._id },
     };
@@ -209,7 +213,10 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
 
     const options = {
       method: "PATCH",
-      url: "https://radiant-peak-38996.herokuapp.com/productos/" + producto._id + "/",
+      url:
+        "https://radiant-peak-38996.herokuapp.com/productos/" +
+        producto._id +
+        "/",
       headers: { "Content-Type": "application/json" },
       data: { ...infoEditada },
     };
@@ -232,48 +239,47 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
   // FINALIZA LA PARTE DE EDICIÓN
 
   return (
-    <tr className='row'>
-      <td className='cell'>{producto.idProduct}</td>
-      <td className='cell'>{producto.producto}</td>
-      <td className='cell'>{producto.descripcion}</td>
-      <td className='cell'>
+    <tr className="row">
+      <td className="cell">{producto.idProduct}</td>
+      <td className="cell">{producto.producto}</td>
+      <td className="cell">{producto.descripcion}</td>
+      <td className="cell">
         {/* <i className="far fa-eye detailIcon tooltip">
                     <span className="tooltipText">Detalles</span>
                 </i> */}
 
         <i
-          className='far fa-edit editIcon tooltip'
+          className="far fa-edit editIcon tooltip"
           onClick={() => setOpenDialogEdit(true)}
         >
-          <span className='tooltipText'>Editar</span>
+          <span className="tooltipText">Editar</span>
         </i>
 
         <i
-          class='fas fa-trash-alt deleteIcon tooltip'
+          class="fas fa-trash-alt deleteIcon tooltip"
           onClick={() => setOpenDialog(true)}
         >
-          <span className='tooltipText'>Eliminar</span>
+          <span className="tooltipText">Eliminar</span>
         </i>
 
-        <Dialog fullWidth maxWidth='sm' className='dialog' open={openDialog}>
-          <h3 className='titleDialog'>Confirmar eliminación</h3>
+        <Dialog fullWidth maxWidth="sm" className="dialog" open={openDialog}>
+          <h3 className="titleDialog">Confirmar eliminación</h3>
           <div>
-            <p className='textDelete'>
+            <p className="textDelete">
               ¿Está seguro de eliminar este producto?
             </p>
           </div>
-          <div className='divButtonDialog'>
+          <div className="divButtonDialog">
             <button
               onClick={() => eliminarProducto()}
-              className='buttonDialogDelete'
+              className="buttonDialogDelete"
             >
               Sí, eliminar
             </button>
 
-            
             <button
               onClick={() => setOpenDialog(false)}
-              className='buttonDialogDelete'
+              className="buttonDialogDelete"
             >
               Cancelar
             </button>
@@ -281,22 +287,22 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
         </Dialog>
 
         <Dialog
-          fullWidth
-          maxheight='200%'
-          className='dialogEdit'
+          fullWidth="sm" //Agregado 25 oct 7:37 am
+          maxheight="200%"
+          className="dialogEdit"
           open={openDialogEdit}
         >
-          <section className='form-edit'>
+          <section className="form-edit">
             <form ref={form} onSubmit={submitForm}>
               <h4>Editar de Producto</h4>
-              <label htmlFor='idProduct' className='labelForm'>
+              <label htmlFor="idProduct" className="labelForm">
                 Identificador único de producto
               </label>
               <input
-                className='controls'
-                type='number'
-                name='idProduct'
-                placeholder='Identificador unico'
+                className="controls"
+                type="number"
+                name="idProduct"
+                placeholder="Identificador unico"
                 required
                 disabled
                 value={infoEditada.idProduct}
@@ -305,14 +311,14 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
                 }
               />
 
-              <label htmlFor='producto' className='labelForm'>
+              <label htmlFor="producto" className="labelForm">
                 Nombre del producto
               </label>
               <input
-                className='controls'
-                type='text'
-                name='producto'
-                placeholder='Nombre del Producto'
+                className="controls"
+                type="text"
+                name="producto"
+                placeholder="Nombre del Producto"
                 required
                 value={infoEditada.producto}
                 onChange={(e) =>
@@ -320,14 +326,14 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
                 }
               />
 
-              <label htmlFor='descripcion' className='labelForm'>
+              <label htmlFor="descripcion" className="labelForm">
                 Descripción del producto
               </label>
               <input
-                className='controls descripcion'
-                type='text'
-                name='descripcion'
-                placeholder='Añadir una descripcion del producto'
+                className="controls descripcion"
+                type="text"
+                name="descripcion"
+                placeholder="Añadir una descripcion del producto"
                 required
                 value={infoEditada.descripcion}
                 onChange={(e) =>
@@ -338,14 +344,14 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
                 }
               />
 
-              <label htmlFor='valorUnitario' className='labelForm'>
+              <label htmlFor="valorUnitario" className="labelForm">
                 Valor unitario del producto
               </label>
               <input
-                className='controls '
-                type='number'
-                name='valorUnitario'
-                placeholder='Valor Unitario'
+                className="controls "
+                type="number"
+                name="valorUnitario"
+                placeholder="Valor Unitario"
                 required
                 value={infoEditada.valorUnitario}
                 onChange={(e) =>
@@ -356,40 +362,35 @@ const FilaProducto = ({ setMostrarTabla, producto, setEjecutarConsulta }) => {
                 }
               />
 
-              <label htmlFor='estado' className='labelForm'>
+              <label htmlFor="estado" className="labelForm">
                 Estado
               </label>
               <select
-                className='controls mouse'
-                name='estado'
+                className="controls mouse"
+                name="estado"
                 required
                 defaultValue={producto.estado}
                 onChange={(e) =>
                   setInfoEditada({ ...infoEditada, estado: e.target.value })
                 }
               >
-                <option disabled value=''>
+                <option disabled value="">
                   Estado del Producto
                 </option>
                 <option>Disponible</option>
                 <option>No Disponible</option>
               </select>
 
+              <button onClick={() => submitForm} className="buttonDialogDelete">
+                Enviar
+              </button>
               <button
-              onClick={() => (submitForm)}
-              className='buttonDialogDelete'
-            >
-              Enviar
-            </button>
-              <button type="button"
-              onClick={() => setOpenDialogEdit(false)}
-              className='buttonDialogDelete'
-            >
-              Cancelar
-            </button>
-            
-            
-            
+                type="button"
+                onClick={() => setOpenDialogEdit(false)}
+                className="buttonDialogDelete"
+              >
+                Cancelar
+              </button>
             </form>
           </section>
         </Dialog>
@@ -441,67 +442,67 @@ const IngresarPage = ({
   };
 
   return (
-    <div className='fondo'>
-      <section className='form-registro'>
+    <div className="fondo">
+      <section className="form-registro">
         <form ref={form} onSubmit={submitForm}>
           <h4>Registro de Producto</h4>
-          <label htmlFor='idProduct' className='labelForm'>
+          <label htmlFor="idProduct" className="labelForm">
             Identificador único de producto
           </label>
           <input
-            className='controls'
-            type='number'
-            name='idProduct'
-            placeholder='Identificador unico producto'
+            className="controls"
+            type="number"
+            name="idProduct"
+            placeholder="Identificador unico producto"
             required
           />
-          <label htmlFor='producto' className='labelForm'>
+          <label htmlFor="producto" className="labelForm">
             Nombre del producto
           </label>
           <input
-            className='controls'
-            type='text'
-            name='producto'
-            placeholder='Nombre del Producto'
+            className="controls"
+            type="text"
+            name="producto"
+            placeholder="Nombre del Producto"
             required
           />
-          <label htmlFor='descripcion' className='labelForm'>
+          <label htmlFor="descripcion" className="labelForm">
             Descripción del producto
           </label>
           <input
-            className='controls descripcion'
-            type='text'
-            name='descripcion'
-            placeholder='Añadir una descripcion del producto'
+            className="controls descripcion"
+            type="text"
+            name="descripcion"
+            placeholder="Añadir una descripcion del producto"
             required
           />
-          <label htmlFor='valorUnitario' className='labelForm'>
+          <label htmlFor="valorUnitario" className="labelForm">
             Valor unitario del producto
           </label>
           <input
-            className='controls '
-            type='number'
-            name='valorUnitario'
-            placeholder='Valor Unitario'
+            className="controls "
+            type="number"
+            name="valorUnitario"
+            placeholder="Valor Unitario"
             required
           />
-          <label htmlFor='estado' className='labelForm'>
+          <label htmlFor="estado" className="labelForm">
             Estado
           </label>
           <select
-            className='controls mouse'
-            name='estado'
-            defaultValue=''
+            className="controls mouse"
+            name="estado"
+            defaultValue=""
             required
           >
-            <option disabled value=''>
+            <option disabled value="">
               Estado del Producto
             </option>
             <option>Disponible</option>
             <option>No Disponible</option>
           </select>
 
-          <button className='botonRegistro' type='submit'>
+          <button className="botonRegistro" type="submit">
             Enviar
           </button>
         </form>
