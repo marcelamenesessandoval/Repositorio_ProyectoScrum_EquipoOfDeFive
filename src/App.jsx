@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Index from "pages/index";
 import AdminSidebar from "pages/admin/admin";
@@ -19,12 +20,22 @@ import "styles/stylestable.css";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-function App() {
+class App extends Component {
+  static propTypes = {
+    children: PropTypes.node,
+  };
 
+  render() {
+    const { children } = this.props;
+    return <div>{children}</div>;
+  }
+}
+
+function App() {
   const { isAuthenticated } = useAuth0();
 
   console.log(isAuthenticated);
- 
+
   return (
     <Auth0Provider
       domain="misiontic-equipo-of-de-five.us.auth0.com"
