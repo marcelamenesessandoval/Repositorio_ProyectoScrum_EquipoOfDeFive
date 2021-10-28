@@ -309,7 +309,7 @@ const FilaVenta = ({ setMostrarTabla, venta, setEjecutarConsulta }) => {
           className='dialogEdit'
           open={openDialogEdit}
         >
-          <section className='form-edit'>
+          <section className='form-editVenta'>
             <form ref={form} onSubmit={submitForm}>
               <h4>Editar Venta</h4>
               <label htmlFor='idVenta' className='labelForm'>
