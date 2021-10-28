@@ -3,7 +3,7 @@ import React from 'react'
 function EditarUsuario() {
     return (
         <div className="fondo">
-            <section className="form-registro ">
+            <section className="form-registroVenta ">
                 <form>
                     <h4>Editar usuario</h4>
                     <input className="controls" type="text" name="Nombre" defaultValue="Andres" required disabled />

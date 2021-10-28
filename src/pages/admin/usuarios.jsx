@@ -258,9 +258,9 @@ const FilaUsuario = ({ setMostrarTabla, usuario, setEjecutarConsulta }) => {
           className='dialogEdit'
           open={openDialogEdit}
         >
-          <section className='form-edit'>
+          <section className='form-editVenta'>
             <form ref={form} onSubmit={submitForm}>
-              <h4>Editar Venta</h4>
+              <h4>Editar Usuario</h4>
 
               <label className='labelForm' htmlFor='nombreUsuario'>
                 Nombre del usuario
@@ -354,64 +354,5 @@ const FilaUsuario = ({ setMostrarTabla, usuario, setEjecutarConsulta }) => {
   );
 };
 
-//ESTA ES LA SECCIÓN DE LA EDICIÓN AÚN NO ES SEGURO SI FUNCIONA CORRECTAMENTE, ADEMÁS FALTA DEFINIR QUÉ CAMPOS SE TRAEN DE LOGGIN
-
-// const EditarUsuario = ({ usuario, setMostrarTabla, setEjecutarConsulta }) => {
-//   const [edit, setEdit] = useState(false);
-//   const [infoEditada, setInfoEditada] = useState({
-//     usuario: usuario.idUsuario,
-//     usuario: usuario.nombreUsuario,
-//     usuario: usuario.correoUsuario,
-//     usuario: usuario.rol,
-//     usuario: usuario.estadoUsuario,
-//   });
-
-//   const form = useRef(null);
-
-//   const submitForm = async (e) => {
-//     e.preventDefault();
-//     const fd = new FormData(form.current);
-//     const nuevoUsuario = {};
-//     fd.forEach((value, key) => {
-//       nuevoUsuario[key] = value;
-//     });
-
-//     const options = {
-//       method: "PATCH",
-//       url: "http://localhost:5000/usuarios/" + usuario._id + "/",
-//       headers: { "Content-Type": "application/json" },
-//       data: { ...infoEditada },
-//     };
-
-//     await axios
-//       .request(options)
-//       .then(function (response) {
-//         console.log(response.data);
-//         setEjecutarConsulta(true);
-//         alert("El usuario se ha actualizado correctamente");
-//       })
-//       .catch(function (error) {
-//         alert("Hubo un error al actualizar el usuario");
-//         console.error(error);
-//       });
-
-//     setOpenDialogEdit(false);
-//   };
-
-//   return (
-//     <div className='fondo'>
-//       <section className='form-registro'>
-//         <form ref={form} onSubmit={submitForm}>
-//           <h4>Editar usuario</h4>
-//           //FALTA INDICAR QUÉ CAMPOS SE VAN A EDITAR PUES ALGUNOS SUPONGO QUE SE
-//           TRAEN DEL AUTH0
-//           <button className='botonRegistro' type='submit'>
-//             Enviar
-//           </button>
-//         </form>
-//       </section>
-//     </div>
-//   );
-// };
 
 export default UsuariosPage;

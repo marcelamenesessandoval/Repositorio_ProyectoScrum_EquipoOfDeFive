@@ -41,7 +41,7 @@ export const editarProducto = async (id, data, succesCallback, errorCallback) =>
 export const eliminarProducto = async (id, succesCallback, errorCallback) => {
     const options = {
         method: 'DELETE',
-        url: 'hhttps://radiant-peak-38996.herokuapp.com/productos' + id + '/',
+        url: 'https://radiant-peak-38996.herokuapp.com/productos' + id + '/',
         headers: { 'Content-Type': 'application/json' }
     };
     await axios
